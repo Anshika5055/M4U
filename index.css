@@ -1,0 +1,121 @@
+/*In CSS, "display: flex" is a property that enables the "Flexbox" layout mode, allowing you to easily arrange and align elements within a container,*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centers items vertically */
+  padding: 10px 20px; /* Adds spacing */
+  position: fixed; /* Fixes the header at the top */
+  top: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  max-width: 100%; /* Prevents overflow */
+  z-index: 1000; /* Ensures it stays on top */
+  background-color: white;
+  border: 1px solid rgb(209, 10, 0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Small shadow */
+}
+.logo-container {
+  display: flex;
+  align-items: center; /* Ensures vertical alignment */
+}
+
+.logo {
+  width: 120px;
+}
+.m4u-text {
+  font-family: "Pacifico"; /* Thick & bold font */
+  font-size: 40px; /* Adjust size */
+  font-weight: 1000; /* Extra bold */
+  text-transform: uppercase; /* Capital letters */
+  color: rgb(209, 10, 0); /* Adjust color */
+  text-shadow: 40px 20px 30px rgba(248, 71, 71, 0.861); /* Shadow effect */
+  font-weight: bold;
+  margin-left: 15px; /* Space between logo and text */
+
+  white-space: nowrap;
+}
+
+.nav-items {
+  flex-grow: 1; /* Ensures the nav items push to the right */
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Pushes search & nav items to the right */
+}
+.search {
+  color: rgb(209, 10, 0);
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+  padding: 10px 20px; /* Increased padding for better spacing */
+
+  margin-right: 20px;
+}
+.nav-items > ul {
+  display: flex;
+  list-style: none;
+  padding: 0; /* Ensures no extra padding */
+  margin: 0; /* Ensures no extra margin */
+  padding-right: 30px;
+}
+.nav-items > ul > li {
+  color: rgb(209, 10, 0);
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+  padding: 10px 20px; /* Increased padding for better spacing */
+  margin: 0 10px; /* Adjusted margin to prevent excessive gaps */
+}
+.body {
+  margin-top: 150px; /* Adjust value as needed */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.res-card {
+  margin: 7.5px;
+  width: 200px;
+  height: auto; /* Allow height to adjust based on content */
+
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center elements horizontally */
+  text-align: center;
+  padding: 10px; /* Add some spacing */
+  border: 1px solid transparent; /* Set initial border to transparent */
+}
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.res-card:hover {
+  cursor: pointer;
+  border: 1px solid black; /* Apply border on hover */
+  transform: scale(1.05); /* Increase size slightly on hover */
+  z-index: 1; /* Bring card to the front if overlapping */
+}
+.res-logo {
+  width: 100%; /* Make image take full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Ensure the image covers the space */
+  border-bottom: 1px solid #ccc; /* Optional: Adds separation between image and text */
+}
+
+.res-card h3 {
+  margin-top: 10px; /* Add spacing between image and text */
+  font-size: 16px; /* Adjust font size if needed */
+}
+.res-card * {
+  margin: 5px 0; /* Reduce spacing for all child elements */
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
