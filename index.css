@@ -203,20 +203,66 @@ body {
     width: 100%; /* 1 card per row on mobile */
   }
 }
-/* @media (max-width: 1024px) {
-  .res-card {
-    width: calc(33.33% - 20px);
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15 px;
+  margin-top: 150px;
+  margin-right: 40px;
+}
+
+.shimmer-card {
+  width: calc(22% - 20px); /* Matches .res-card */
+  aspect-ratio: 1/1; /* Same square shape */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Same as .res-card */
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin: 10px;
+}
+/* aspect-ratio: 1/1; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  width: calc(22% - 20px);
+  height: 200px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  animation: shimmer 1.5s infinite;
+  justify-content: space-between;
+} */
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+@media (max-width: 1024px) {
+  .shimmer-card {
+    width: calc(30% - 20px); /* Adjust for tablets */
   }
 }
 
 @media (max-width: 768px) {
-  .res-card {
-    width: calc(50% - 20px); 
+  .shimmer-card {
+    width: calc(45% - 20px); /* 2 cards per row on smaller screens */
   }
 }
 
 @media (max-width: 480px) {
-  .res-card {
-    width: 100%;
+  .shimmer-card {
+    width: 100%; /* 1 card per row on mobile */
   }
-} */
+}
