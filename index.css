@@ -1,5 +1,10 @@
 /*In CSS, "display: flex" is a property that enables the "Flexbox" layout mode, allowing you to easily arrange and align elements within a container,*/
+/* body {
+  background-color: white;
+  color: #1e1e1e;
+} */
 .header {
+  /* background-color: #ff6c2e; */
   display: flex;
   justify-content: space-between;
   align-items: center; /* Centers items vertically */
@@ -10,9 +15,10 @@
   width: 100vw; /* Full viewport width */
   max-width: 100%; /* Prevents overflow */
   z-index: 1000; /* Ensures it stays on top */
-  background-color: white;
-  border: 1px solid rgb(209, 10, 0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Small shadow */
+  background-color: rgb(255, 249, 249);
+  border: 2px solid rgb(209, 10, 0);
+  /* box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.8); Red shadow effect */
+  box-sizing: border-box;
 }
 .logo-container {
   display: flex;
@@ -31,7 +37,7 @@
   font-size: 40px; /* Adjust size */
   font-weight: 1000; /* Extra bold */
   text-transform: uppercase; /* Capital letters */
-  color: rgb(209, 10, 0); /* Adjust color */
+  color: rgb(226, 0, 0); /* Adjust color */
   text-shadow: 40px 20px 30px rgba(248, 71, 71, 0.861); /* Shadow effect */
   font-weight: bold;
   margin-left: 15px; /* Space between logo and text */
@@ -72,13 +78,25 @@
   margin: 0; /* Ensures no extra margin */
   padding-right: 30px;
 }
-.nav-items > ul > li {
+.nav-items > ul > button {
   color: rgb(209, 10, 0);
   padding: 10px;
   margin: 10px;
   font-size: 15px;
-  padding: 10px 20px; /* Increased padding for better spacing */
+  padding: 10px 0px; /* Increased padding for better spacing */
+  width: 85px;
+  height: 40px;
+  text-align: center;
   margin: 0 10px; /* Adjusted margin to prevent excessive gaps */
+  cursor: pointer;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: transparent;
+}
+.nav-items ul button:hover {
+  background: rgb(0, 0, 0); /* Changes from red to black */
+  color: #ffd700;
 }
 .body {
   margin-top: 130px; /* Adjust value as needed */
@@ -88,6 +106,7 @@
 
 .res-card {
   width: calc(22% - 20px); /* Adjust width to keep square shape */
+  cursor: pointer; /* Added pointer cursor on hover */
   aspect-ratio: 1/1; /* Make card a perfect square */
   display: flex;
   flex-direction: column;
@@ -120,17 +139,20 @@
 .res-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Distributes cards evenly */
+  /* justify-content: center;  */
+  /* Distributes cards evenly */
   gap: 10px; /* Adds spacing between cards */
   padding: 20px;
   margin-top: 20px;
-  margin-right: 10px;
+  /* margin-right: 10px;*/
+  margin-left: 120px;
 }
 .res-card:hover {
   cursor: pointer;
-  border: 1px solid black; /* Apply border on hover */
+  border: 2px solid #a7c7e7; /* Apply border on hover  */
   transform: scale(1.05); /* Increase size slightly on hover */
   z-index: 1; /* Bring card to the front if overlapping */
+  box-shadow: 0 0 15px 5px rgba(167, 199, 231, 0.9);
 }
 .res-logo {
   width: 100%; /* Reduce the image width to 80% of the card */
@@ -158,6 +180,32 @@
   margin: 0px 0; /* Reduce spacing for all child elements */
   box-sizing: border-box;
 }
+.filter-btn {
+  margin-top: 50px;
+  color: rgb(209, 10, 0);
+  padding: 10px;
+  margin: 10px;
+  font-size: 15px;
+  padding: 10px 0px; /* Increased padding for better spacing */
+  width: 180px;
+  height: 40px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: transparent;
+}
+.filter-btn:hover {
+  background: rgb(0, 0, 0); /* Changes from red to black */
+  color: #ffd700;
+}
+.filter {
+  display: flex;
+  gap: 1px;
+  align-items: center;
+  margin-top: 0px;
+}
 
 html,
 body {
@@ -165,7 +213,9 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
-/* Ensure responsiveness */
+.filter {
+  margin-bottom: 10px; /* Adjusted margin to reduce gap */
+}
 @media (max-width: 1024px) {
   .res-card h3,
   .res-card h4 {
@@ -207,7 +257,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15 px;
+  gap: 15px;
   margin-top: 150px;
   margin-right: 40px;
 }
@@ -224,7 +274,7 @@ body {
   border-radius: 10px;
   background-color: #f0f0f0;
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+
   margin: 10px;
 }
 /* aspect-ratio: 1/1; 
@@ -240,6 +290,110 @@ body {
   animation: shimmer 1.5s infinite;
   justify-content: space-between;
 } */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 2px; /* Adds space between input and button */
+  margin-top: 2px;
+}
+
+.search-box {
+  padding: 5px;
+  font-size: 15px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  width: 180px; /* Adjusted width to match button */
+  outline: none;
+  height: 20px;
+  margin-top: 0.5px;
+}
+
+.search-box:focus {
+  border-color: black;
+}
+
+.btn {
+  font-size: 15px;
+  cursor: pointer; /* Added pointer cursor on hover */
+  color: rgb(255, 0, 0);
+  background: transparent;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  height: 35px;
+}
+
+.btn:hover {
+  background-color: black; /* Change background to black */
+  color: #ffd700; /* Change text color to gold */
+  cursor: pointer;
+}
+.categories-container {
+  margin: 20px 0;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Distributes cards evenly */
+  gap: 10px; /* Adds spacing between cards */
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.categories-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Alex Brush";
+}
+
+.categories {
+  display: flex;
+  padding-top: 10px;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: black transparent;
+}
+
+.category-card {
+  width: calc(22% - 20px); /* Adjust width to keep square shape */
+  cursor: pointer; /* Added pointer cursor on hover */
+  aspect-ratio: 1/1; /* Make card a perfect square */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Ensures space is managed */
+  text-align: center;
+  padding: 10px;
+
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  position: relative;
+}
+
+.category-card:hover {
+  cursor: pointer;
+  border: 1px solid #a7c7e7; /* Apply border on hover  */
+  transform: scale(1.05); /* Increase size slightly on hover */
+  z-index: 1; /* Bring card to the front if overlapping */
+  box-shadow: 0 0 10px 5px rgba(167, 199, 231, 0.9);
+}
+.category-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.category-card p {
+  margin-top: 5px;
+  font-size: 14px;
+}
 
 @keyframes shimmer {
   0% {
@@ -265,4 +419,98 @@ body {
   .shimmer-card {
     width: 100%; /* 1 card per row on mobile */
   }
+}
+/* Chatbot and General Styling */
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #ec440b;
+}
+
+.content {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chatbot-container {
+  width: 350px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: white;
+}
+
+.chat-window {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-message {
+  padding: 10px;
+  border-radius: 10px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  background-color: #ff6a00;
+  color: white;
+  align-self: flex-end;
+}
+
+.chat-message.bot {
+  background-color: #e5e5e5;
+  color: black;
+  align-self: flex-start;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: white;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #ff6200;
+}
+
+.AppCh {
+  color: red;
+  justify-content: center;
+  align-items: center;
+}
+
+.textalign {
+  text-align: center;
+  width: 100%; /* Ensure the element takes full width for centering */
 }
