@@ -28,8 +28,18 @@ const Chatbot = () => {
             sender: "bot",
           },
         ]);
-      }, 3000);
-    }, 1000);
+      }, 4000);
+
+      setTimeout(() => {
+        setMessages((prev) => [
+          ...prev,
+          {
+            text: "Thankuuu Foodies😍🤤,Let's chat again soon ,Till add Some Food In Your Belly🍕😂",
+            sender: "bot",
+          },
+        ]);
+      }, 5500);
+    }, 2000);
   };
 
   return (
@@ -38,8 +48,8 @@ const Chatbot = () => {
         position: "fixed",
         bottom: "20px",
         right: "20px",
-        width: isOpen ? "300px" : "50px",
-        height: isOpen ? "400px" : "50px",
+        width: isOpen ? "450px" : "50px",
+        height: isOpen ? "600px" : "50px",
         backgroundColor: "#f8f9fa",
         borderRadius: "40px",
         border: "2px solid black", // Added black border
