@@ -340,6 +340,7 @@ body {
   margin-top: 20px;
   margin-right: 10px;
   align-items: center;
+  color: black;
 }
 
 .categories-title {
@@ -347,6 +348,7 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
   font-family: "Alex Brush";
+  color: black;
 }
 
 .categories {
@@ -518,17 +520,18 @@ body {
 /* login scene */
 /* CSS for Modern Animated Login Modal */
 /* General Styles */
+
 .login-modal,
 .signup-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ee702c;
+  background: #04003d;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-  border: 2px solid white;
+  border: 2px solid rgb(66, 201, 255);
   z-index: 1000;
   width: 450px;
   height: 500px;

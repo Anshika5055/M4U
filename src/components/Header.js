@@ -14,11 +14,13 @@ export const Header = () => {
 
   const handleLogin = () => {
     setShowLogin(true);
+    document.body.classList.add("modal-open");
   };
 
   const handleLogout = () => {
     setBtnName("Login");
     setShowLogin(false);
+    document.body.classList.remove("modal-open");
     setPopupMessage("Oops, you logged out!");
     setShowPopup(true);
     setTimeout(() => setShowPopup(false), 3000);
@@ -31,6 +33,7 @@ export const Header = () => {
     } else {
       setBtnName("Logout");
       setShowLogin(false);
+      document.body.classList.remove("modal-open");
       setPopupMessage("Successful login foodie");
       setShowPopup(true);
       setTimeout(() => setShowPopup(false), 3000);
@@ -62,7 +65,13 @@ export const Header = () => {
       {showLogin && (
         <div className="login-modal">
           <div className="login-content">
-            <span className="close" onClick={() => setShowLogin(false)}>
+            <span
+              className="close"
+              onClick={() => {
+                setShowLogin(false);
+                document.body.classList.remove("modal-open");
+              }}
+            >
               &times;
             </span>
             <h2 className="login-title">Login</h2>
@@ -149,22 +158,6 @@ export const Header = () => {
                   </span>
                 </div>
               </div>
-              <div className="input-container">
-                <label className="floating-label">Confirm Password</label>
-                <div className="password-container">
-                  <input
-                    type={showSignupPassword ? "text" : "password"}
-                    required
-                    className="input-field full-width"
-                  />
-                  <span
-                    className="eye-icon"
-                    onClick={() => setShowSignupPassword(!showSignupPassword)}
-                  >
-                    {showSignupPassword ? "👁️" : "🙈"}
-                  </span>
-                </div>
-              </div>
               <div className="button-group">
                 <button type="submit" className="signup-btn">
                   Sign Up
@@ -179,7 +172,7 @@ export const Header = () => {
           className="popup-message"
           style={{
             position: "fixed",
-            top: "10px",
+            top: "30px",
             left: "50%",
             transform: "translateX(-50%)",
             background: "black",
@@ -194,4 +187,3 @@ export const Header = () => {
     </div>
   );
 };
-export default Header;
