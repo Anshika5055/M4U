@@ -4,11 +4,11 @@ import { LOGO_URL } from "../utils/constants";
 export const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
   const [message, setMessage] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
 
@@ -28,8 +28,6 @@ export const Header = () => {
     event.preventDefault();
     if (password.length !== 5) {
       setMessage("Password must be exactly 5 characters!");
-    } else if (password !== confirmPassword) {
-      setMessage("Password does not match!");
     } else {
       setBtnName("Logout");
       setShowLogin(false);
@@ -78,9 +76,7 @@ export const Header = () => {
                 />
               </div>
               <div className="input-container">
-                <label className="floating-label">
-                  Password (5-digit strong password)
-                </label>
+                <label className="floating-label">Password</label>
                 <div className="password-container">
                   <input
                     type={showPassword ? "text" : "password"}
@@ -97,24 +93,6 @@ export const Header = () => {
                   </span>
                 </div>
               </div>
-              <div className="input-container">
-                <label className="floating-label">Confirm Password</label>
-                <div className="password-container">
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    required
-                    className="input-field full-width"
-                    maxLength="5"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                  <span
-                    className="eye-icon"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  >
-                    {showConfirmPassword ? "👁️" : "🙈"}
-                  </span>
-                </div>
-              </div>
               {message && (
                 <div
                   className="error-message"
@@ -128,11 +106,68 @@ export const Header = () => {
                 </div>
               )}
               <div className="button-group">
-                <button type="button" className="cancel-btn">
-                  Cancel
-                </button>
                 <button type="submit" className="login-btn">
                   Login
+                </button>
+              </div>
+            </form>
+            <button className="signup-btn" onClick={() => setShowSignup(true)}>
+              Sign Up
+            </button>
+          </div>
+        </div>
+      )}
+      {showSignup && (
+        <div className="signup-modal">
+          <div className="signup-content">
+            <span className="close" onClick={() => setShowSignup(false)}>
+              &times;
+            </span>
+            <h2 className="signup-title">Sign Up</h2>
+            <form>
+              <div className="input-container">
+                <label className="floating-label">New Username</label>
+                <input
+                  type="text"
+                  required
+                  className="input-field full-width"
+                />
+              </div>
+              <div className="input-container">
+                <label className="floating-label">Password</label>
+                <div className="password-container">
+                  <input
+                    type={showSignupPassword ? "text" : "password"}
+                    required
+                    className="input-field full-width"
+                  />
+                  <span
+                    className="eye-icon"
+                    onClick={() => setShowSignupPassword(!showSignupPassword)}
+                  >
+                    {showSignupPassword ? "👁️" : "🙈"}
+                  </span>
+                </div>
+              </div>
+              <div className="input-container">
+                <label className="floating-label">Confirm Password</label>
+                <div className="password-container">
+                  <input
+                    type={showSignupPassword ? "text" : "password"}
+                    required
+                    className="input-field full-width"
+                  />
+                  <span
+                    className="eye-icon"
+                    onClick={() => setShowSignupPassword(!showSignupPassword)}
+                  >
+                    {showSignupPassword ? "👁️" : "🙈"}
+                  </span>
+                </div>
+              </div>
+              <div className="button-group">
+                <button type="submit" className="signup-btn">
+                  Sign Up
                 </button>
               </div>
             </form>
