@@ -1,4 +1,10 @@
 /*In CSS, "display: flex" is a property that enables the "Flexbox" layout mode, allowing you to easily arrange and align elements within a container,*/
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+* {
+  margin: 0;
+}
+
 body {
   background-color: #f7f5f7;
   color: #1e1e1e;
@@ -91,7 +97,8 @@ body {
   padding-right: 30px;
 }
 
-.nav-items > ul > button {
+.nav-button,
+.btn2 {
   background: linear-gradient(
     90deg,
     rgba(65, 80, 109, 1) 0%,
@@ -677,13 +684,22 @@ body {
 /* login scene */
 /* CSS for Modern Animated Login Modal */
 /* General Styles */
+/* Add this to your index.css */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: flex-start; /* Moves content to the left */
+  align-items: center;
+  padding-left: 5vw; /* Adds some spacing from the left edge */
+}
 
 .login-modal,
 .signup-modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 53%;
+  left: 25%;
   transform: translate(-50%, -50%);
+
   background: #e8e8f0;
   padding: 20px;
   border-radius: 10px;
@@ -714,8 +730,20 @@ body {
 }
 
 h2 {
-  color: rgb(25, 24, 24);
+  /* color: rgb(25, 24, 24); */
   margin-bottom: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 3rem;
 }
 
 .input-container {
@@ -726,16 +754,27 @@ h2 {
 }
 
 .floating-label {
+  background: linear-gradient(
+    90deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-family: "Dancing Script", cursive;
+  font-weight: bold;
+  font-size: 2rem;
   display: block;
   margin-bottom: 5px;
-  color: rgb(8, 8, 8);
-  font-size: 14px;
+  /* color: rgb(8, 8, 8); */
+  /* font-size: 14px; */
 }
 
 .input-field {
   width: 100%;
   padding: 10px;
-  border: 2px solid #080808;
+  border: 2px solid #7d7c7ced;
   border-radius: 5px;
   font-size: 16px;
   background: transparent;
@@ -762,7 +801,7 @@ h2 {
 
 .login-btn,
 .signup-btn {
-  background: #28a745;
+  background: #28a746ac;
   color: white;
   padding: 10px 15px;
   border: none;
@@ -775,7 +814,7 @@ h2 {
 }
 
 .signup-btn {
-  background: #007bff;
+  background: #007bffa8;
   margin-top: 20px;
 }
 
@@ -786,6 +825,237 @@ h2 {
 }
 /* About css */
 .About-m4u {
-  margin-top: 150px;
+  margin-top: 100px;
   position: absolute;
+}
+.Contact-m4u {
+  margin-top: 100px;
+  position: absolute;
+}
+.Cart-m4u {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center content vertically (optional) */
+
+  text-align: center; /* Ensures text is centered */
+  background: linear-gradient(
+    90deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+}
+
+.Cart-m4u img {
+  margin-top: 150px;
+  width: 30%;
+  height: 80%;
+  justify-content: center;
+
+  padding: 5px;
+}
+/* About us */
+img {
+  width: 100%;
+}
+
+/* Custom arrow styles */
+/* Carousel Container */
+/* Carousel Container */
+.my-custom-carousel {
+  width: 100%; /* Full width */
+  /* height: 60vh; Adjust height */
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
+  overflow: hidden; /* Prevents scrollbars */
+  height: 2500px;
+}
+
+/* Ensure images fully cover without gaps */
+.my-custom-carousel .carousel .slide img {
+  width: 100%; /* Full width */
+  height: 100%; /* Maintain height */
+  object-fit: cover; /* Ensures the image covers without distortion */
+  display: block; /* Removes any extra spacing */
+}
+
+/* Fix gap on the left */
+
+/* Fix control arrows positioning */
+.carousel .control-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  height: 8rem;
+}
+
+.carousel .control-arrow:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+.my-custom-carousel .carousel .control-next.control-arrow,
+.my-custom-carousel .carousel .control-prev.control-arrow {
+  top: 45%; /* Center arrows vertically */
+  transform: translateY(-50%);
+}
+/* Speed up slide transition */
+.carousel .slide {
+  transition: transform 0.2s ease-in-out !important;
+}
+.food img {
+  width: 50%;
+  height: auto;
+  /* object-fit: fill; */
+}
+.pizza {
+  object-fit: fill;
+  margin-top: auto;
+  height: 500px;
+  width: 100%;
+}
+/* .pizza {
+  height: 40%;
+  object-fit: contain;
+} */
+.Contact-m4u {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.306);
+  z-index: 1;
+}
+.video-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%; /* Keep half the screen width */
+  height: 100vh; /* Full viewport height */
+  object-fit: cover; /* Ensures it covers the area */
+  transform: scale(1.2) translateY(-160px); /* Moves video up */
+  z-index: -1;
+}
+.video-lg {
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 100%; /* Takes half the screen width */
+  height: 90vh;
+  object-fit: cover; /* Ensures it fills the area without distortion */
+  z-index: -1; /* Keeps it in the background */
+  transform: scale(0.8) translateY(-30px);
+}
+
+/* Contact Form Styling */
+.contact-form {
+  left: 2%; /* Align to the left */
+  top: 30%;
+  transform: translateY(-50%);
+  background: rgba(206, 203, 203, 0);
+  backdrop-filter: blur(10px); /* Smooth blur */
+  /* padding: 19.5px; */
+  border: 5px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 40%;
+  height: fit-content;
+  text-align: left;
+  position: relative; /* Change from absolute */
+  margin-top: 80px; /* Adjust based on your header height */
+}
+
+.blue {
+  background: linear-gradient(
+    90deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-family: "Dancing Script", cursive;
+}
+/* Adjusting the position to ensure it touches but doesn’t overlap the video */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100vh;
+  padding: 0 2%;
+}
+
+/* Inputs and Labels */
+.contact-form input,
+.contact-form textarea {
+  width: 90%;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background: rgba(219, 218, 218, 0.441);
+  color: #060505;
+  font-size: 1rem;
+}
+
+/* Button */
+.frmbtn {
+  font-weight: bold;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+
+  -webkit-text-fill-color: #f8f8f6;
+
+  cursor: pointer;
+  background-color: black;
+  /* color: rgb(8, 7, 7); */
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.cntct {
+  font-size: 1.5rem;
+}
+.CM {
+  font-size: 3rem;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
+}
+.AC {
+  font-size: 2rem;
+  color: #333;
+  text-align: center;
+  margin-top: 20px; /* Moves content closer to the images */
+}
+
+.AD {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 800px;
+  margin: 10px auto; /* Keeps paragraph centered */
 }
