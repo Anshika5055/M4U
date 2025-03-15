@@ -1,8 +1,8 @@
 /*In CSS, "display: flex" is a property that enables the "Flexbox" layout mode, allowing you to easily arrange and align elements within a container,*/
-/* body {
+body {
   background-color: white;
   color: #1e1e1e;
-} */
+}
 .header {
   /* background-color: #ff6c2e; */
   display: flex;
@@ -359,6 +359,7 @@ body {
   padding-bottom: 10px;
   scrollbar-width: thin;
   scrollbar-color: black transparent;
+  justify-content: center;
 }
 
 .category-card {
@@ -527,9 +528,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #04003d;
+  background: #e8e8f0;
   padding: 20px;
   border-radius: 10px;
+  border: 2px solid black;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
   border: 2px solid rgb(66, 201, 255);
   z-index: 1000;
@@ -552,11 +554,11 @@ body {
   right: 15px;
   font-size: 20px;
   cursor: pointer;
-  color: white;
+  color: rgb(10, 10, 10);
 }
 
 h2 {
-  color: white;
+  color: rgb(25, 24, 24);
   margin-bottom: 15px;
 }
 
@@ -570,16 +572,17 @@ h2 {
 .floating-label {
   display: block;
   margin-bottom: 5px;
-  color: white;
+  color: rgb(8, 8, 8);
   font-size: 14px;
 }
 
 .input-field {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 2px solid #080808;
   border-radius: 5px;
   font-size: 16px;
+  background: transparent;
 }
 
 .password-container {
@@ -592,6 +595,7 @@ h2 {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  size: 50px;
 }
 
 .button-group {
@@ -608,8 +612,10 @@ h2 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
+  width: 96%;
+  margin-right: 3%;
   font-size: 16px;
+  margin-top: 2vw;
 }
 
 .signup-btn {

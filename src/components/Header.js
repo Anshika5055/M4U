@@ -49,7 +49,10 @@ export const Header = () => {
       <div className="nav-container">
         <div className="nav-items">
           <ul>
-            <button className="Home">Home</button>
+            <button className="Home">
+              Home
+              {/* <Link to="/body">Home</Link> */}
+            </button>
             <button className="About Us">About Us</button>
             <button className="Contact Us">Contact Us</button>
             <button className="Cart">Cart</button>
