@@ -44,7 +44,7 @@ export const Header = () => {
     <div className="header">
       <div className="logo-container">
         <img className="logo" src={LOGO_URL} />
-        <span className="m4u-text">M4U</span>
+        {/* <span className="m4u-text">M4U</span> */}
       </div>
       <div className="nav-container">
         <div className="nav-items">
