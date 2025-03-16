@@ -5,7 +5,7 @@
   margin: 0;
 }
 
-body {
+.body {
   background-color: #f7f5f7;
   color: #1e1e1e;
 }
@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
   align-items: center;
   /* Centers items vertically */
-  padding: 5px 10px;
+  padding: 5px 15px;
   /* Adds spacing */
   position: fixed;
   /* Fixes the header at the top */
@@ -150,7 +150,7 @@ body {
 }
 
 .body {
-  margin-top: 130px;
+  margin-top: 90px;
   /* Adjust value as needed */
   overflow-x: hidden;
   /* Prevents horizontal scrolling */
@@ -499,6 +499,7 @@ body {
 }
 
 .categories {
+  width: 100%;
   display: flex;
   padding-top: 10px;
   overflow-x: auto;
@@ -691,25 +692,27 @@ body {
   justify-content: flex-start; /* Moves content to the left */
   align-items: center;
   padding-left: 5vw; /* Adds some spacing from the left edge */
+  background-color: #f6f6f6;
 }
 
 .login-modal,
 .signup-modal {
   position: fixed;
-  top: 53%;
+  top: 52%;
+
   left: 25%;
   transform: translate(-50%, -50%);
 
-  background: #e8e8f0;
+  background: #ffffff;
   padding: 20px;
   border-radius: 10px;
-  border: 2px solid black;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-  border: 2px solid rgb(66, 201, 255);
+  /* border: 2px solid rgb(228, 221, 221); */
+  /* box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); */
+  border: 2px solid rgba(138, 39, 250, 0.575);
   z-index: 1000;
   width: 450px;
-  height: 500px;
-  border-color: #a7c7e7;
+  height: 510px;
+  border-color: rgba(97, 61, 196, 0.473);
   border-width: 5px;
   border-radius: 20px;
 }
@@ -726,7 +729,7 @@ body {
   right: 15px;
   font-size: 20px;
   cursor: pointer;
-  color: rgb(10, 10, 10);
+  color: rgb(92, 90, 90);
 }
 
 h2 {
@@ -774,10 +777,10 @@ h2 {
 .input-field {
   width: 100%;
   padding: 10px;
-  border: 2px solid #7d7c7ced;
+  border: 2px solid transparent;
   border-radius: 5px;
   font-size: 16px;
-  background: transparent;
+  background-color: rgba(238, 235, 235, 0.885);
 }
 
 .password-container {
@@ -933,23 +936,24 @@ img {
 }
 .video-bg {
   position: absolute;
-  top: 0;
+  top: 5%;
   right: 0;
   width: 50%; /* Keep half the screen width */
   height: 100vh; /* Full viewport height */
   object-fit: cover; /* Ensures it covers the area */
   transform: scale(1.2) translateY(-160px); /* Moves video up */
-  z-index: -1;
+  /* z-index: -1; */
 }
 .video-lg {
   position: fixed;
-  top: 10%;
-  left: 10%;
+  top: 14%;
+  left: 20%;
+  /* right: 0; */
   width: 100%; /* Takes half the screen width */
   height: 90vh;
-  object-fit: cover; /* Ensures it fills the area without distortion */
-  z-index: -1; /* Keeps it in the background */
-  transform: scale(0.8) translateY(-30px);
+
+  z-index: 1; /* Keeps it in the background */
+  transform: scale(1.8) translateY(-30px);
 }
 
 /* Contact Form Styling */
@@ -957,7 +961,9 @@ img {
   left: 2%; /* Align to the left */
   top: 30%;
   transform: translateY(-50%);
-  background: rgba(206, 203, 203, 0);
+  background: #ffffff;
+  /* background-color: #ee1c1c; */
+  /* background: rgba(206, 203, 203, 0); */
   backdrop-filter: blur(10px); /* Smooth blur */
   /* padding: 19.5px; */
   border: 5px solid transparent;
@@ -989,6 +995,7 @@ img {
   width: 100%;
   height: 100vh;
   padding: 0 2%;
+  background-color: #f6f6f6;
 }
 
 /* Inputs and Labels */
@@ -1044,18 +1051,10 @@ img {
   text-align: center;
   font-family: "Dancing Script", cursive;
 }
-.AC {
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
-  margin-top: 20px; /* Moves content closer to the images */
-}
 
-.AD {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.6;
+.cart1 {
+  justify-content: center;
   text-align: center;
-  max-width: 800px;
-  margin: 10px auto; /* Keeps paragraph centered */
+  font-family: "Arial", cursive;
+  font-weight: bold;
 }

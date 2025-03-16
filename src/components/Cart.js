@@ -7,7 +7,7 @@ const Cart = () => {
         width="100"
         height="100"
       />
-      <h1> OOPS,Cart is Empty </h1>
+      <h1 className="cart1"> OOPS,Cart is Empty </h1>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { LOGIN_URL } from "../utils/constants";
-import login from "../assets/login.mp4";
+import log from "../assets/log.mp4";
 
 const Login = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <video autoPlay muted loop className="video-lg">
-        <source src={login} type="video/mp4" />
+        <source src={log} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className="login-modal">
@@ -39,12 +39,18 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="input-container">
               <label className="floating-label">Username</label>
-              <input type="text" required className="input-field" />
+              <input
+                placeholder="Type Here"
+                type="text"
+                required
+                className="input-field"
+              />
             </div>
             <div className="input-container">
               <label className="floating-label">Password</label>
               <div className="password-container">
                 <input
+                  placeholder="Type Here"
                   type={showPassword ? "text" : "password"}
                   required
                   className="input-field"
@@ -93,12 +99,18 @@ const Login = () => {
             <form>
               <div className="input-container">
                 <label className="floating-label">New Username</label>
-                <input type="text" required className="input-field" />
+                <input
+                  placeholder="Type Here"
+                  type="text"
+                  required
+                  className="input-field"
+                />
               </div>
               <div className="input-container">
                 <label className="floating-label">Password</label>
                 <div className="password-container">
                   <input
+                    placeholder="Type Here"
                     type={showSignupPassword ? "text" : "password"}
                     required
                     className="input-field"
