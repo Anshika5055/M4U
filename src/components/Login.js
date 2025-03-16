@@ -12,11 +12,21 @@ const Login = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
 
+  const handlePasswordChange = (e) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    if (newPassword.length >= 5) {
+      setMessage("");
+    } else {
+      setMessage("Password must contain atleast 5 characters!");
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (password.length !== 5) {
-      setMessage("Password must be exactly 5 characters!");
+    if (password.length < 5) {
+      setMessage("Password must contain atleast 5 characters!");
     } else {
       setBtnName("Logout"); // ✅ Updating Header's button text
       setPopupMessage("Successful login! Foodie has come 🍕🍔");
@@ -54,8 +64,8 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                   required
                   className="input-field"
-                  maxLength="5"
-                  onChange={(e) => setPassword(e.target.value)}
+                  maxLength="20"
+                  onChange={handlePasswordChange}
                 />
                 <span
                   className="eye-icon"
