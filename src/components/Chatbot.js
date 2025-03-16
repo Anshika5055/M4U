@@ -12,7 +12,6 @@ const Chatbot = () => {
     const userMessage = { text: input, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
-
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -51,8 +50,8 @@ const Chatbot = () => {
         width: isOpen ? "450px" : "50px",
         height: isOpen ? "600px" : "50px",
         backgroundColor: "#f8f9fa",
-        borderRadius: "40px",
-        border: "2px solid black", // Added black border
+        borderRadius: "50px",
+        border: "1px solid black", // Added black border
         boxShadow: "0px 0px 10px rgba(0,0,0,0.1)",
         transition: "all 0.3s",
         overflow: "hidden",
@@ -65,7 +64,8 @@ const Chatbot = () => {
             width: "100%",
             height: "100%",
             border: "none",
-            background: "#FF0000",
+            background:
+              "linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(94, 126, 234, 1) 0%, rgba(147, 68, 210, 1) 100%)",
             color: "white",
             borderRadius: "50%",
             fontSize: "16px",
@@ -82,8 +82,9 @@ const Chatbot = () => {
           <div
             style={{
               padding: "10px",
-              backgroundColor: "#000000",
-              color: "white",
+              backgroundColor: "white",
+              color: "black",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
               textAlign: "center",
               fontWeight: "bold",
               display: "flex",
