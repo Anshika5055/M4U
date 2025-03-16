@@ -1058,3 +1058,33 @@ img {
   font-family: "Arial", cursive;
   font-weight: bold;
 }
+/*error handling*/
+.oops {
+  font-size: 3rem;
+  top: 50%;
+  align-items: center;
+  font-family: "Dancing Script", cursive;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.oops1 {
+  background: linear-gradient(
+    90deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
