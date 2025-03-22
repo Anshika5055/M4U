@@ -8,6 +8,7 @@
 .body {
   background-color: #f7f5f7;
   color: #1e1e1e;
+  margin-top: 90px;
 }
 
 .header {
@@ -150,12 +151,13 @@
 }
 
 .body {
-  margin-top: 90px;
   /* Adjust value as needed */
   overflow-x: hidden;
   /* Prevents horizontal scrolling */
   padding: 0 20px;
 }
+/* Remove default link styles */
+/* Ensure all links inside .res-container follow this style */
 
 .res-card {
   width: calc(22% - 20px);
@@ -189,11 +191,15 @@
   text-align: center;
   padding: 10px;
 
-  border: 1px solid transparent; 
+  border: 1px solid transparent;
   border-radius: 10px;
   position: relative;
 } */
-.res-container {
+.res-container a {
+  decoration: none;
+
+  text-decoration: none;
+  color: rgb(6, 6, 6);
   display: flex;
   flex-wrap: wrap;
   /* justify-content: center;  */

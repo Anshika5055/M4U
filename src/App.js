@@ -9,7 +9,7 @@ import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import Cart from "./components/Cart.js";
 import Login from "./components/Login.js";
-
+import RestaurantMenu from "./components/RestaurantMenu.js";
 // import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //19
 
@@ -55,6 +55,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/menu/:resId", //dynamic
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,

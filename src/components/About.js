@@ -9,7 +9,13 @@ const About = () => {
     <div className="About-m4u">
       {/* Carousel Section */}
       <div className="my-custom-carousel">
-        <Carousel showThumbs={false} infiniteLoop autoPlay transitionTime={100}>
+        <Carousel
+          showThumbs={false}
+          infiniteLoop
+          autoPlay
+          transitionTime={100}
+          interval={500}
+        >
           <div className="pizza">
             <img className="food" src={ab} alt="img1" />
           </div>
