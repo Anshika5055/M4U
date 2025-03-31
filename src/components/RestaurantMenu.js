@@ -48,15 +48,14 @@ const RestaurantMenu = () => {
     avgRating,
   } = resInfo?.cards?.[2]?.card?.card?.info || {};
 
-  const backupImageUrl =
-    "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSpe1nagwb2FeNU7bJc9-tUZaGD8cirpKzkYqvUWHCu-O0XXkKb"; // Backup image
+  const backupImageUrl = "https://i.ibb.co/jF03xY4/no-restraunt.png"; // Backup image
 
   return (
     <div className="menu">
       <h1 className="res-name">{name}</h1>
       <div className=" menu-header">
         <p>📍Area Name: {areaName}</p>
-        <p> ⭐️Rating: {avgRating} </p>
+        <p className="rating"> ⭐️Rating: {avgRating} </p>
         <p>🍜Cuisines: {cuisines?.join(", ")}</p>
         <p>💸costForTwo:{costForTwoMessage}</p>
       </div>
@@ -74,7 +73,7 @@ const RestaurantMenu = () => {
                     <div className="menu-items">
                       <strong>{item.card.info.name}</strong>
                       <div className="price">
-                        - ₹
+                        ₹
                         {item.card.info.price / 100 ||
                           item.card.info.defaultPrice / 100}
                       </div>

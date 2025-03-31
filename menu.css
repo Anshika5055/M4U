@@ -42,6 +42,7 @@
   );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
+  text-shadow: 2px solid blue;
 }
 .titlemenu {
   display: flex; /* Align text and image in a row */
@@ -62,6 +63,7 @@
   text-align: center;
   border-radius: 12px; /* Smooth rounded corners */
   font-family: Apple Chancery, sans-serif;
+
   position: relative;
   box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
@@ -82,4 +84,8 @@
   ); /* Gradient border */
   border-radius: 15px; /* Match border-radius */
   z-index: -1;
+}
+.rating {
+  font-weight: bold;
+  font-size: 20px;
 }

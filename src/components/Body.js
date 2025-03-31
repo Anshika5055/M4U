@@ -4,6 +4,7 @@ import Shimmer from "./Shimmer";
 import CategoryCard from "./CategoryCard";
 import Chatbot from "./Chatbot";
 import { Link } from "react-router";
+import MenuFilterApp from "./MenuFilterApp ";
 const Body = () => {
   const [listfRestaurants, setlistofRestaurants] = useState([]);
   const [FilteredRestaurant, setFilteredRestaurant] = useState([]);
@@ -105,6 +106,7 @@ const Body = () => {
               <CategoryCard key={index} category={category} />
             ))}
           </div>
+          <MenuFilterApp />
         </div>
       )}
 
