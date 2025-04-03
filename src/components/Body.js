@@ -106,7 +106,6 @@ const Body = () => {
               <CategoryCard key={index} category={category} />
             ))}
           </div>
-          <MenuFilterApp />
         </div>
       )}
 

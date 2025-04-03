@@ -30,7 +30,7 @@ class About extends Component {
             </div>
           </Carousel>
         </div>
-        <User name={"Anshika Rakheja"} />
+        {/* <User name={"Anshika Rakheja"} /> */}
         <UserClass name={"Anshika Rakheja"} />
       </div>
     );

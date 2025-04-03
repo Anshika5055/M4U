@@ -3,16 +3,29 @@ import React from "react";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      count: 0,
+      userInfo: {
+        name: "Dummy",
+        location: "default",
+      },
     };
   }
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/Anshika5055");
+    const json = await data.json();
+
+    this.setState({
+      userInfo: json,
+    });
+    console.log(json);
+  }
   render() {
-    const { name } = this.props;
-    const { count } = this.state;
+    const { name, location, follower_url } = this.state.userInfo;
+
     return (
       <div className="user-card">
-        <h1>Count :{count}</h1>
+        {/* <h1>Count :{count}</h1>
         <button
           onClick={() => {
             this.setState({
@@ -21,10 +34,12 @@ class UserClass extends React.Component {
           }}
         >
           increase count
-        </button>
-
+        </button> */}
+        <img src="https://ibb.co/0R816MLr" alt="user" />
+        <h1>{follower_url}</h1>
         <h2>Name: {name}</h2>
-        <h3> Location: Haryana</h3>
+        <h3> Location: {location}</h3>
+
         <h4>Contact: @anshikarakheja1</h4>
       </div>
     );

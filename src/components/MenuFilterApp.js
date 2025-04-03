@@ -72,6 +72,11 @@ const MenuFilterApp = () => {
                 <p className="text-sm text-gray-500">
                   Delivery time: {restaurant.sla.slaString}
                 </p>
+                {restaurant.aggregatedDiscountInfo?.header && (
+                  <p className="text-sm text-green-600 font-semibold">
+                    {restaurant.aggregatedDiscountInfo.header}
+                  </p>
+                )}
               </li>
             ))}
           </ul>
