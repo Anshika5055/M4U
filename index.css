@@ -135,6 +135,24 @@
   /* background: transparent; */
   border: 2px solid transparent;
 }
+.status {
+  color: #41429a;
+  text-shadow: #41429a;
+  font-weight: bold;
+  padding: 10px;
+  margin: 15px;
+  font-size: 15px;
+  padding: 10px 0px;
+  /* Increased padding for better spacing */
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  margin: 0 10px;
+  /* Adjusted margin to prevent excessive gaps */
+  cursor: pointer;
+  border-radius: 10px;
+  white-space: nowrap;
+}
 
 .nav-items ul button:hover {
   /* background: rgb(0, 0, 0);
@@ -1084,5 +1102,10 @@ img {
   -webkit-background-clip: text;
   font-weight: bold;
   font-style: italic;
+  text-align: center;
+}
+.os {
+  margin-top: 5%;
+  justify-content: center;
   text-align: center;
 }

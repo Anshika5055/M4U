@@ -16,8 +16,8 @@ class About extends Component {
             showThumbs={false}
             infiniteLoop
             autoPlay
-            transitionTime={150}
-            interval={1500}
+            transitionTime={100}
+            interval={1000}
           >
             <div className="pizza">
               <img className="food" src={ab} alt="img1" />

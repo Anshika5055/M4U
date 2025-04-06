@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header.js";
 import Body from "./components/Body.js";
 import Chatbot from "./components/Chatbot.js";
+import VideoModal from "./components/VideoModal.js"; // Import VideoModal
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
-import About from "./components/About.js";
+// import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import Cart from "./components/Cart.js";
 import Login from "./components/Login.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
-
+import Shimmer from "./components/Shimmer.js";
+import Grocery from "./components/Grocery";
+const Grocery = lazy(() => import("./components/Grocery"));
+const About = lazy(() => import("./components/About.js"));
 const AppLayout = () => {
   return (
     <div className="app">
+      <VideoModal /> {/* Full-screen video on first visit */}
+      {/* <Shimmer /> */}
       <Header />
       <Outlet />
       <Chatbot />
@@ -32,7 +38,11 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h1>Loading</h1>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
@@ -47,8 +57,16 @@ const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/menu/:resId", //dynamic
+        path: "/menu/:resId", // dynamic
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
     ],
     errorElement: <Error />,

@@ -5,14 +5,19 @@ import CategoryCard from "./CategoryCard";
 import Chatbot from "./Chatbot";
 import { Link } from "react-router";
 import MenuFilterApp from "./MenuFilterApp ";
+import useOnlineStatus from "../utils/useOnlineStatus";
+
 const Body = () => {
   const [listfRestaurants, setlistofRestaurants] = useState([]);
   const [FilteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [Categories, setCategories] = useState([]);
+  const onlineStatus = useOnlineStatus();
+
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     console.log("Fetching data..."); // Debugging log
     try {
@@ -55,7 +60,12 @@ const Body = () => {
   //conditional rendering////////////////////////
   // if (listfRestaurants.length === 0) {
   //   return <Shimmer />; // Show shimmer instead of an error
+
   // }
+  if (onlineStatus === false) {
+    return <h1 className="os">Looks like u r offline check your internet</h1>;
+  }
+
   return listfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -94,6 +104,11 @@ const Body = () => {
           }}
         >
           Top Rated Restaurants
+        </button>
+        <button className="nav-button">
+          <li id="grocery_button">
+            <Link to="/grocery">Grocery</Link>
+          </li>
         </button>
       </div>
       {/* 🍽️ "What's on Your Mind?" Categories Section */}
