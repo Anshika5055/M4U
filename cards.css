@@ -1,0 +1,135 @@
+/* @import "tailwindcss"; */
+
+.res-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  /* margin-left: 100px; */
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.res-container a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.res-card {
+  aspect-ratio: 1/0.7; /* Ensures square shape */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  position: relative;
+}
+
+.res-card:hover {
+  cursor: pointer;
+  border: 2px solid #a7c7e7;
+  /* Apply border on hover  */
+  transform: scale(1.05);
+  /* Increase size slightly on hover */
+  z-index: 1;
+  /* Bring card to the front if overlapping */
+  box-shadow: 0 0 15px 5px rgba(167, 199, 231, 0.9);
+}
+
+.res-logo {
+  width: 100%;
+  /* Reduce the image width to 80% of the card */
+  aspect-ratio: 1/0.5;
+  border-bottom: 1px solid #ccc;
+  /* Optional: Adds separation between image and text */
+  border-radius: 10px;
+  /* Optional: Rounded corners for aesthetics */
+}
+
+.res-card h3,
+.res-card h4 {
+  font-size: clamp(14px, 0.1vw, 18px);
+  /* Responsive font size */
+  font-weight: bold;
+  /* Ensures bold text */
+  text-align: center;
+  text-transform: uppercase;
+  /* Optional for better visibility */
+  flex-grow: 1;
+}
+
+/* .res-card h3 {
+    margin-top: 10px; 
+    font-size: 16px; 
+  }
+  .res-card h4 {
+    word-wrap: break-all;
+  } */
+.res-card * {
+  margin: 0px 0;
+  /* Reduce spacing for all child elements */
+  box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .res-card h3,
+  .res-card h4 {
+    font-size: 18px;
+    /* Keep text size readable */
+  }
+}
+
+@media (max-width: 768px) {
+  .res-card h3,
+  .res-card h4 {
+    font-size: 17px;
+    /* Slightly larger for small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .res-card h3,
+  .res-card h4 {
+    font-size: 16px;
+    /* Keep it visible on mobile */
+  }
+}
+
+@media (max-width: 1024px) {
+  .res-container {
+    grid-template-columns: repeat(3, 1fr); /* 2 items per row */
+  }
+}
+@media (max-width: 768px) {
+  .res-container {
+    grid-template-columns: repeat(2, 1fr); /* 1 item per row */
+  }
+}
+@media (max-width: 480px) {
+  .res-container {
+    grid-template-columns: repeat(1, 1fr); /* 1 item per row */
+  }
+}
+/* @media (max-width: 1024px) {
+    .res-card {
+      width: calc(30% - 20px);
+      
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .res-card {
+      width: calc(45% - 20px);
+     
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .res-card {
+      width: 100%;
+     
+    }
+  } */

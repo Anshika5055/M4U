@@ -35,7 +35,7 @@ class UserClass extends React.Component {
         >
           increase count
         </button> */}
-        <img src="https://ibb.co/0R816MLr" alt="user" />
+        {/* <img src="https://ibb.co/0R816MLr" /> */}
         <h1>{follower_url}</h1>
         <h2>Name: {name}</h2>
         <h3> Location: {location}</h3>
