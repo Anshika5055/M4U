@@ -1,44 +1,74 @@
 import React, { useState } from "react";
+import "./Chatbot.css";
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { text: "Hi Foodie, how can I assist you?", sender: "bot" },
+    {
+      text: "Hi Foodie, how can I assist you?",
+      sender: "bot",
+      timestamp: new Date().toLocaleString(),
+    },
   ]);
   const [input, setInput] = useState("");
+  const [showAgentOptions, setShowAgentOptions] = useState(false);
 
   const handleSend = () => {
     if (!input.trim()) return;
-    const userMessage = { text: input, sender: "user" };
+
+    // Add user message with timestamp
+    const userMessage = {
+      text: input,
+      sender: "user",
+      timestamp: new Date().toLocaleString(),
+    };
     setMessages((prev) => [...prev, userMessage]);
     setInput("");
+
+    // Reset agent options
+    setShowAgentOptions(false);
+
+    // First, show the "I will connect you" message
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
-        { text: "I will connect you to one of my agents.", sender: "bot" },
+        {
+          text: "I will connect you to one of my agents.",
+          sender: "bot",
+          timestamp: new Date().toLocaleString(),
+        },
       ]);
 
-      setTimeout(() => {
-        setMessages((prev) => [
-          ...prev,
-          { text: "No agent available right now.", sender: "bot" },
-          {
-            text: "Contact: +1234567890 | Email: support@example.com",
-            sender: "bot",
-          },
-        ]);
-      }, 4000);
+      // Then show the agent options
+      setShowAgentOptions(true);
 
+      // Finally, show the thank you message after a longer delay
       setTimeout(() => {
         setMessages((prev) => [
           ...prev,
           {
             text: "Thankuuu Foodies😍🤤,Let's chat again soon ,Till add Some Food In Your Belly🍕😂",
             sender: "bot",
+            timestamp: new Date().toLocaleString(),
           },
         ]);
-      }, 5500);
-    }, 2000);
+      }, 4000); // 10 second delay to ensure it appears after agent options
+    }, 1000);
+  };
+
+  const connectToAgent = (number) => {
+    const whatsappUrl = `https://wa.me/91${number}?text=Hey! I’m having a bit of trouble with M4U — can you assist?`;
+    window.open(whatsappUrl, "_blank");
+
+    // Add a message confirming the action with timestamp
+    setMessages((prev) => [
+      ...prev,
+      {
+        text: `Connecting you to agent via WhatsApp...`,
+        sender: "bot",
+        timestamp: new Date().toLocaleString(),
+      },
+    ]);
   };
 
   return (
@@ -98,7 +128,7 @@ const Chatbot = () => {
               style={{
                 background: "transparent",
                 border: "none",
-                color: "white",
+                color: "black",
                 fontSize: "20px",
                 cursor: "pointer",
                 textAlign: "center",
@@ -118,7 +148,7 @@ const Chatbot = () => {
                   margin: "5px 0",
                 }}
               >
-                <span
+                <div
                   style={{
                     display: "inline-block",
                     padding: "8px 12px",
@@ -126,12 +156,82 @@ const Chatbot = () => {
                     backgroundColor:
                       msg.sender === "user" ? "#000000" : "#e9ecef",
                     color: msg.sender === "user" ? "white" : "black",
+                    maxWidth: "80%",
                   }}
                 >
-                  {msg.text}
-                </span>
+                  <div>{msg.text}</div>
+                  <div
+                    style={{
+                      fontSize: "0.7rem",
+                      opacity: 0.7,
+                      marginTop: "3px",
+                      textAlign: msg.sender === "user" ? "right" : "left",
+                    }}
+                  >
+                    {msg.timestamp}
+                  </div>
+                </div>
               </div>
             ))}
+
+            {/* Agent options */}
+            {showAgentOptions && (
+              <div style={{ marginTop: "10px" }}>
+                <div style={{ marginBottom: "5px", fontWeight: "bold" }}>
+                  Connect with an agent:
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px",
+                  }}
+                >
+                  <button
+                    onClick={() => connectToAgent("8168036606")}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      padding: "8px 12px",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    Agent 1: Order Issue
+                  </button>
+                  <button
+                    onClick={() => connectToAgent("9485965439")}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      padding: "8px 12px",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    Agent 2: Menu Related
+                  </button>
+                  <button
+                    onClick={() => connectToAgent("8708719044")}
+                    style={{
+                      backgroundColor: "#25D366",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      padding: "8px 12px",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    Agent 3: Refund Related
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Input box */}

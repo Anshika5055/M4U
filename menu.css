@@ -1,39 +1,168 @@
 @import url("https://fonts.googleapis.com/css2?family=Emblema+One&family=Lilita+One&family=Pacifico&display=swap");
-.menu {
-  margin-top: 100px;
-  justify-content: center;
-  text-align: center;
-}
 
-.list {
-  list-style-type: none; /* Removes default bullet points */
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
 }
 
-.menu-items {
-  flex-grow: 1; /* Ensures text takes available space */
-  margin-right: 22%;
+/* Push content below header */
+.menu-center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  margin-top: 20px;
+  padding-bottom: 10px;
 }
 
-.menu-item {
-  display: flex; /* Align text and image in a row */
-  align-items: center; /* Centers text and image vertically */
-  justify-content: space-between; /* Text on left, image on right */
+/* Main menu container */
+.menu {
+  padding-top: 130px;
+  max-width: 850px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Menu Heading */
+.menu h2 {
+  /* font-family: "Pacifico", cursive; */
+  font-size: 30px;
+  color: #9b59b6;
+  margin-bottom: 30px;
+}
+
+/* Menu Header Box */
+.menu-header {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  background: white;
+  color: rgb(96, 5, 156);
+  text-align: center;
+  border-radius: 12px;
+  font-family: "Apple Chancery", sans-serif;
+  position: relative;
+  font-size: 14px;
+  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-header::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(135deg, #007bff, #6a0dad, #000);
+  border-radius: 15px;
+  z-index: -1;
+}
+
+.rating {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Category Title */
+.titlemenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  border-bottom: 1px solid #ddd; /* Adds a border for separation */
+  border-bottom: 1px solid #ddd;
 }
 
-.menu-image {
-  margin-right: 20%;
-  width: 100px; /* Small image size */
-  height: 100px;
-  border-radius: 8px;
-  margin-left: 15px; /* Push image to right */
-  mix-blend-mode: multiply;
+/* Dropdown-like Category Cards */
+.menu-category {
+  width: 90%;
+  max-width: 600px;
+  background-color: #f2f2f2;
+  padding: 15px 20px;
+  margin: 20px auto;
+  font-size: 20px;
+  font-family: "Caveat", cursive;
+  color: #7d3cff;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.res-name {
+.menu-category:hover {
+  background-color: #e8ddf4;
+}
+
+.menu-category::after {
+  content: "▼";
+  float: right;
+  color: #7d3cff;
+}
+
+/* Menu List */
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Each item in the menu */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 12px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  border-radius: 12px;
+  margin: 15px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Section */
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding-right: 40px;
+  text-align: left;
+}
+
+/* Food Name */
+.menu-name {
+  font-weight: bold;
+  font-size: 18px;
   font-family: Emblema One sans-serif;
+}
+
+/* Price */
+.price1 {
+  font-size: 18px;
+  color: #000000;
+}
+
+/* Description */
+.desc {
+  margin-top: 10px;
+  font-size: 15px;
+  color: rgb(111, 110, 110);
+}
+
+/* Restaurant Name Styling */
+.res-name {
+  font-family: "Emblema One", sans-serif;
+  font-size: 16px;
   background: linear-gradient(
     90deg,
     rgba(65, 80, 109, 1) 0%,
@@ -42,50 +171,97 @@
   );
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
-  text-shadow: 2px solid blue;
-}
-.titlemenu {
-  display: flex; /* Align text and image in a row */
-  align-items: center; /* Centers text and image vertically */
-  justify-content: space-between; /* Text on left, image on right */
-  padding: 10px;
-  border-bottom: 1px solid #ddd; /* Adds a border for separation */
-}
-.price {
-  font-size: 15px;
-}
-.menu-header {
-  max-width: 400px; /* Small container */
-  margin: 20px auto; /* Centering */
-  padding: 15px;
-  background: white; /* White background */
-  color: rgb(96, 5, 156);
+  margin-bottom: 5px;
   text-align: center;
-  border-radius: 12px; /* Smooth rounded corners */
-  font-family: Apple Chancery, sans-serif;
+}
 
+/* ✅ New: Image Container and Floating Button */
+.menu-image-wrapper {
   position: relative;
-  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  width: 120px;
+  height: 120px;
+  padding: 5px;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-sizing: border-box;
 }
 
-/* Gradient Border Shadow */
-.menu-header::after {
-  content: "";
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(
-    135deg,
-    #007bff,
-    #6a0dad,
-    #000
-  ); /* Gradient border */
-  border-radius: 15px; /* Match border-radius */
-  z-index: -1;
+.menu-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }
-.rating {
-  font-weight: bold;
-  font-size: 20px;
+
+/* Add to Cart floating button */
+.add-to-cart-container {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* .add-to-cart-btn {
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: fit-content;
+} */
+
+.add-to-cart-btn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(147, 68, 210, 1) 0%,
+    rgba(94, 126, 234, 1) 100%
+  );
+}
+
+/* ✅ Responsive layout */
+@media (max-width: 600px) {
+  .menu {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+  }
+
+  .menu-category {
+    font-size: 18px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-image-wrapper {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+
+  .menu-image {
+    width: 100%;
+    height: auto;
+  }
+}
+.add-to-cart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  position: relative; /* safe fallback */
 }

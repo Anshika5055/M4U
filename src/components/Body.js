@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import CategoryCard from "./CategoryCard";
@@ -12,8 +12,9 @@ const Body = () => {
   const [FilteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [Categories, setCategories] = useState([]);
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   const onlineStatus = useOnlineStatus();
-
+  console.log("boody rendered", listfRestaurants);
   useEffect(() => {
     fetchData();
   }, []);
@@ -127,7 +128,11 @@ const Body = () => {
       <div className="res-container">
         {FilteredRestaurant.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/menu/" + restaurant.info.id}>
-            <RestaurantCard resData={restaurant} />
+            {restaurant.info.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <RestaurantCard resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>
