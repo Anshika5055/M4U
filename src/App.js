@@ -16,6 +16,7 @@ import Grocery from "./components/Grocery";
 import Checkout from "./components/Checkout.js";
 import { CartProvider } from "../context/cartContext.js";
 import { RestaurantProvider } from "../context/RestaurantContext.js";
+import Footer from "./components/Footer.js";
 // const About = lazy(() => import("./components/About.js"));
 const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayout = () => {

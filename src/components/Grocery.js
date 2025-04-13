@@ -95,6 +95,7 @@ const Grocery = () => {
                     display: "flex",
                     justifyContent: "center",
                     overflow: "visible", // ⬅️ prevent parent from cutting text
+                    paddingRight: "10%",
                   }}
                 >
                   {cartItem ? (
@@ -175,7 +176,6 @@ const Grocery = () => {
                         whiteSpace: "nowrap", // ✅ fixed
                         overflow: "visible", // ✅ added
                         textOverflow: "unset", // ✅ added
-
                         maxWidth: "none", // ✅ optional safety
                         marginLeft: "55px",
                       }}

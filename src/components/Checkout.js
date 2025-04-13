@@ -17,7 +17,7 @@ const Checkout = () => {
   const gst = subtotal * 0.18;
 
   // Calculate delivery fee
-  const deliveryFee = deliveryOption === "express" ? 50 : 20;
+  const deliveryFee = deliveryOption === "express" ? 50 : 0;
 
   // Calculate total
   const total = subtotal + gst + deliveryFee;
@@ -76,7 +76,7 @@ const Checkout = () => {
               checked={deliveryOption === "standard"}
               onChange={(e) => setDeliveryOption(e.target.value)}
             />
-            Standard Delivery (2-3 days) - ₹20
+            Standard Delivery - ₹0
           </label>
           <label>
             <input
@@ -85,7 +85,7 @@ const Checkout = () => {
               checked={deliveryOption === "express"}
               onChange={(e) => setDeliveryOption(e.target.value)}
             />
-            Express Delivery (1 day) - ₹50
+            Express Delivery - ₹50
           </label>
         </div>
       </div>
@@ -100,7 +100,7 @@ const Checkout = () => {
               checked={paymentMethod === "card"}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
-            Credit/Debit Card
+            Credit/Debit Card🔴🟠
           </label>
           <label>
             <input
@@ -118,7 +118,7 @@ const Checkout = () => {
               checked={paymentMethod === "cod"}
               onChange={(e) => setPaymentMethod(e.target.value)}
             />
-            Cash on Delivery
+            Cash on Delivery 💵
           </label>
         </div>
       </div>
