@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
         src={CDN_URL + cloudinaryImageId}
       />
       <div className="res-card-content">
-        <h4 className="res-name2">{name}</h4>
+        <h4 className="res-name">{name}</h4>
         <p className="res-cuisines">{cuisines.join(", ")}</p>
 
         <div className="res-details">

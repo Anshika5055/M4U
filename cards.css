@@ -1,5 +1,5 @@
 /* @import "tailwindcss"; */
-
+@import url("https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@700&display=swap");
 .res-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -50,16 +50,27 @@
   flex-grow: 1;
 }
 
+/* .res-name2 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+  color: #000000;
+  font-weight: 700;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -webkit-text-fill-color: #000000;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+} */
 .res-name2 {
   margin: 0 0 5px 0;
   font-size: 1rem;
-  color: #000000 !important;
-  font-weight: 700 !important;
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  -webkit-text-fill-color: #000000 !important;
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
+  color: #000000;
+  font-weight: 700;
+  /* font-family: "Stardos Stencil", sans-serif; */
+  -webkit-text-fill-color: #000000;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
 }
 
 .res-cuisines {

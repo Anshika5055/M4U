@@ -1,0 +1,287 @@
+.restaurant-login {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f6;
+  padding: 20px;
+}
+
+.containerres {
+  display: flex;
+  width: 75%;
+  max-width: 1200px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 5px 5px 5px 5px rgba(138, 138, 138, 0.5);
+  overflow: hidden;
+}
+
+.login-banner {
+  flex: 1;
+  /* background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); */
+  /* background: radial-gradient(
+    deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 0%
+  ); */
+  background: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgb(11, 11, 11);
+  position: relative;
+  /* box-shadow: 8px solid #fd2c2c; */
+}
+
+.banner-content {
+  text-align: center;
+  z-index: 1;
+}
+
+.banner-content h2 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.banner-content p {
+  font-size: 18px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.banner-image {
+  width: 400px;
+  height: auto;
+  margin-top: 32px;
+}
+
+.login-containerdash {
+  flex: 1;
+  padding: 48px;
+  /* background-color: rgb(211, 23, 23); */
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.login-header h1 {
+  font-size: 28px;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.login-header p {
+  color: #ffffff;
+  margin: 0;
+  font-size: 16px;
+}
+
+.error-message {
+  background-color: #fff3f3;
+  color: #e53935;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  text-align: center;
+  border: 1px solid #ffcdd2;
+}
+
+.login-form {
+  margin-bottom: 32px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #848484;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+  width: 100%;
+  padding: 14px;
+  /* background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.05) 50%,
+    rgba(0, 0, 0, 0.9) 100%
+  ); */
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(
+    270deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(94, 126, 234, 1) 0%,
+    rgba(147, 68, 210, 1) 100%
+  );
+  transform: translateY(-2px);
+}
+
+.login-footer {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #fffdfd;
+}
+
+.test-credentials {
+  background-color: #f8f9fa;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.test-credentials p {
+  margin: 8px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* .test-credentials strong {
+  color: #333;
+} */
+
+.support-text {
+  color: #ffffff;
+  margin: 16px 0 8px 0;
+}
+
+.contact-support {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.contact-support:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+
+  .login-banner {
+    padding: 32px;
+  }
+
+  .banner-content h2 {
+    font-size: 28px;
+  }
+
+  /* .banner-image {
+    width: 90%;
+  } */
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .login-banner {
+    padding: 48px 24px;
+  }
+
+  /* .banner-image {
+    width: 30%;
+  } */
+
+  .login-container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .restaurant-login {
+    padding: 0;
+  }
+
+  .container {
+    border-radius: 0;
+  }
+
+  .login-banner {
+    padding: 32px 20px;
+  }
+
+  .banner-content h2 {
+    font-size: 24px;
+  }
+
+  /* .banner-image {
+    width: 160px;
+  } */
+
+  .login-container {
+    padding: 24px 20px;
+  }
+
+  .login-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
+}

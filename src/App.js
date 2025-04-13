@@ -4,7 +4,13 @@ import { Header } from "./components/Header.js";
 import Body from "./components/Body.js";
 import Chatbot from "./components/Chatbot.js";
 import VideoModal from "./components/VideoModal.js"; // Import VideoModal
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router";
+
 import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
@@ -16,9 +22,23 @@ import Grocery from "./components/Grocery";
 import Checkout from "./components/Checkout.js";
 import { CartProvider } from "../context/cartContext.js";
 import { RestaurantProvider } from "../context/RestaurantContext.js";
-import Footer from "./components/Footer.js";
+import RestaurantDashboard from "./components/RestaurantDashboard.js";
+import Footer from "./components/Footer";
+import Dashboard from "./components/Dashboard";
+import AllOrders from "./components/AllOrders";
+import RestaurantLogin from "./components/RestaurantLogin";
+
 // const About = lazy(() => import("./components/About.js"));
+
 const Grocery = lazy(() => import("./components/Grocery"));
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("restaurantToken");
+  if (!token) {
+    return <Navigate to="/restaurant-login" replace />;
+  }
+  return children;
+};
+
 const AppLayout = () => {
   return (
     <div className="app">
@@ -29,6 +49,9 @@ const AppLayout = () => {
       <Chatbot />
     </div>
   );
+};
+const DashboardLayout = () => {
+  return <Outlet />;
 };
 
 const appRouter = createBrowserRouter([
@@ -78,6 +101,32 @@ const appRouter = createBrowserRouter([
       },
     ],
     errorElement: <Error />,
+  },
+  {
+    path: "/restaurant-login",
+    element: <RestaurantLogin />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <ProtectedRoute>
+        <DashboardLayout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: <Dashboard />,
+      },
+      {
+        path: "orders",
+        element: <AllOrders />,
+      },
+      {
+        path: "menu-management",
+        element: <RestaurantDashboard />,
+      },
+    ],
   },
 ]);
 
