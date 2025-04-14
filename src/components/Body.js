@@ -4,7 +4,7 @@ import Shimmer from "./Shimmer";
 import CategoryCard from "./CategoryCard";
 import Chatbot from "./Chatbot";
 import { Link } from "react-router";
-import MenuFilterApp from "./MenuFilterApp ";
+import MenuFilterApp from "./MenuFilterApp";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import Footer from "./Footer";
 
@@ -15,29 +15,43 @@ const Body = () => {
   const [Categories, setCategories] = useState([]);
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
   const onlineStatus = useOnlineStatus();
-  console.log("boody rendered", listfRestaurants);
+
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [isFaded, setIsFaded] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
   useEffect(() => {
     fetchData();
+    const handleScroll = () => {
+      const isTop = window.scrollY === 0;
+      setShowScrollButton(!isTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    let timeout;
+    if (showScrollButton) {
+      timeout = setTimeout(() => {
+        setIsFaded(true);
+      }, 1200);
+    }
+    return () => clearTimeout(timeout);
+  }, [showScrollButton]);
+
   const fetchData = async () => {
-    console.log("Fetching data..."); // Debugging log
     try {
       const data = await fetch(
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7955061&lng=76.1282996&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
-      console.log("API Response:", json.data.cards); // Debugging the entire response
-
-      // Find the correct array that contains restaurant information
 
       const restaurantData = json?.data?.cards?.find(
         (card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
       )?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-      // Extract categories from API response
-
-      // Set data if found, otherwise keep an empty array
       setlistofRestaurants(restaurantData || []);
       setFilteredRestaurant(restaurantData || []);
 
@@ -53,19 +67,42 @@ const Body = () => {
           link: category?.action?.link,
         })) || [];
 
-      setCategories(categoryData); // Add this line to set categories
-      console.log("Extracted Categories:", categoryData);
+      setCategories(categoryData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  //conditional rendering////////////////////////
-  // if (listfRestaurants.length === 0) {
-  //   return <Shimmer />; // Show shimmer instead of an error
 
-  // }
+  const handleCategoryClick = async (categoryName) => {
+    console.log(`${categoryName}`);
+    try {
+      var cleanCategory = categoryName
+        .replace(/ies$/, "y")
+        .replace(/[\s.,;!?s]+$/, "");
+
+      const response = await fetch(
+        `https://www.swiggy.com/dapi/restaurants/search/v3?lat=28.7974684&lng=76.1322058&str=${cleanCategory}&trackingId=&submitAction=ENTER&queryUniqueId=`
+      );
+      const json = await response.json();
+
+      const restaurants =
+        json?.data?.cards
+          ?.find((card) => card?.groupedCard)
+          ?.groupedCard?.cardGroupMap?.RESTAURANT?.cards?.map((card) => ({
+            info: card.card.card.info,
+            promoted: card.card.card.info?.promoted || false,
+          })) || [];
+
+      setFilteredRestaurant(restaurants);
+    } catch (err) {
+      console.error("Error fetching category-based restaurants:", err);
+    }
+  };
+
   if (onlineStatus === false) {
-    return <h1 className="os">Looks like u r offline check your internet</h1>;
+    return (
+      <h1 className="os">Looks like you are offline. Check your internet.</h1>
+    );
   }
 
   return listfRestaurants.length === 0 ? (
@@ -85,12 +122,16 @@ const Body = () => {
           />
           <button
             className="btn"
-            onClick={() => {
-              console.log(searchText);
-              const filteredRestaurant = listfRestaurants.filter((res) =>
+            onClick={async () => {
+              const filteredByName = listfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
-              ); //remind this
-              setFilteredRestaurant(filteredRestaurant);
+              );
+
+              if (filteredByName.length > 0) {
+                setFilteredRestaurant(filteredByName);
+              } else {
+                await handleCategoryClick(searchText);
+              }
             }}
           >
             Search
@@ -107,20 +148,24 @@ const Body = () => {
         >
           Top Rated Restaurants
         </button>
+
         <button className="nav-button">
           <li id="grocery_button">
             <Link to="/grocery">Grocery</Link>
           </li>
         </button>
       </div>
-      {/* 🍽️ "What's on Your Mind?" Categories Section */}
+
       {Categories.length > 0 && (
         <div className="categories-container">
           <h2 className="categories-title">What's on Your Mind?</h2>
-
           <div className="categories">
             {Categories.map((category, index) => (
-              <CategoryCard key={index} category={category} />
+              <CategoryCard
+                key={index}
+                category={category}
+                onClick={() => handleCategoryClick(category.name)}
+              />
             ))}
           </div>
         </div>
@@ -137,6 +182,66 @@ const Body = () => {
           </Link>
         ))}
       </div>
+
+      {/* No results message */}
+      {FilteredRestaurant.length === 0 && (
+        <h2 style={{ textAlign: "center", marginTop: "20px", color: "#999" }}>
+          No matching restaurants found.
+        </h2>
+      )}
+
+      {/* Reset Button */}
+      <button
+        onClick={() => setFilteredRestaurant(listfRestaurants)}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          left: "20px",
+          width: "40px",
+          height: "40px",
+          borderRadius: "50%",
+          color: "white",
+          background:
+            "linear-gradient(90deg, #41506d 0%, #5a7ded 100%, #9877e3 100%)",
+          border: "none",
+          fontSize: "20px",
+          cursor: "pointer",
+          zIndex: 1000,
+        }}
+        title="Reset"
+      >
+        ↺
+      </button>
+
+      {/* Scroll to Top Button */}
+      {showScrollButton && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          style={{
+            position: "fixed",
+            bottom: "5%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            backgroundColor: hovered ? "#222" : "#000",
+            color: "white",
+            border: "none",
+            fontSize: "24px",
+            cursor: "pointer",
+            zIndex: 1000,
+            opacity: hovered || !isFaded ? 1 : 0.2,
+            transition: "all 0.3s ease",
+          }}
+          title="Back to Top"
+        >
+          ↑
+        </button>
+      )}
+
       <Footer />
     </div>
   );

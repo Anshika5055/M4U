@@ -1,6 +1,10 @@
-const CategoryCard = ({ category }) => {
+const CategoryCard = ({ category, onClick }) => {
   return (
-    <div className="category-card">
+    <div
+      className="category-card"
+      onClick={onClick}
+      style={{ cursor: "pointer" }}
+    >
       <img
         src={`https://media-assets.swiggy.com/swiggy/image/upload/${category.imageUrl}`}
         alt={category.name}

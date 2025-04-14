@@ -5,7 +5,7 @@ import "./RestaurantLogin.css";
 // Mock restaurant data
 const MOCK_RESTAURANTS = {
   "restaurant1@test.com": {
-    passkey: "restaurant123",
+    passkey: "res123",
     restaurantInfo: {
       name: "Tasty Bites",
       cuisines: ["North Indian", "Chinese"],
