@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playball&display=swap");
+
+/* Container */
+.outer {
+  background: linear-gradient(
+    90deg,
+    rgba(152, 119, 227, 1) 0%,
+    rgba(90, 125, 237, 1) 100%
+  );
+  padding: 7px;
+  margin: 15px;
+  border-radius: 16px;
+}
+
+.container-arc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 5px;
+  background: black;
+  border-radius: 15px;
+  font-family: "Segoe UI", sans-serif;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* 💁‍♀️ Left Profile Column */
+.left-column-arc,
+.bottom_right-column-arc {
+  flex: 0 0 48%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 📝 Right Info Column */
+.right-column-arc {
+  flex: 0 0 48%;
+  box-sizing: border-box;
+}
+
+/* 👩‍🎤 Profile Image */
+.profile-image-arc {
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  left: 50%;
+  background: linear-gradient(to right, rgb(0, 102, 255), purple);
+  padding: 5px;
+  margin-top: 12px;
+}
+
+.rprofile-image-arc {
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  right: 50%;
+  background: linear-gradient(to right, rgb(0, 102, 255), purple);
+  padding: 5px;
+}
+
+.Left_follower {
+  left: 10%;
+  margin: 10px;
+  color: #ffffff;
+  font-family: "PlayBall", cursive;
+  font-size: 24px;
+}
+
+.Right_contacts {
+  right: 10%;
+  margin: 10px;
+  color: #ffffff;
+  font-family: "PlayBall", cursive;
+  font-size: 24px;
+}
+
+/* 🧚‍♀️ Name Styling */
+.rname-arc,
+.name-arc {
+  font-family: "Playball", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #7a4ddb;
+  margin: 10px 0 5px 0;
+}
+
+/* ✍️ Tagline */
+.tagline-arc,
+.rtagline-arc {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* 📖 About Sections */
+.about-section-teamarc,
+.rname-arc,
+.rtagline-arc {
+  width: 100%;
+  left: 50%;
+  text-align: center;
+}
+
+.about-section-arc h2,
+.about-section-teamarc h2 {
+  font-family: "Pacifico", cursive;
+  color: #7a4ddb;
+}
+
+.about-section-arc p,
+.li-content,
+.about-section-teamarc p {
+  background: linear-gradient(
+    90deg,
+    rgba(65, 80, 109, 1) 0%,
+    rgba(90, 125, 237, 1) 100%,
+    rgba(152, 119, 227, 1) 100%
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  font-size: 1.5rem;
+  margin: 10px 0;
+  font-family: "PlayBall", cursive;
+  text-align: justify;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+.about-section-arc li {
+  list-style: none;
+}
+
+/* 🦶 Footer */
+.about-footer-arc {
+  width: 100%;
+  left: 50%;
+  text-align: center;
+
+  font-size: 0.9em;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid #ffffff;
+  margin-top: 40px;
+  color: #ffffff;
+}
+
+/* 📱 Responsive – stack when small */
+@media (max-width: 700px) {
+  .left-column-arc,
+  .right-column-arc {
+    flex: 0 0 100%;
+  }
+
+  .container-arc,
+  .rname-arc,
+  .rtagline-arc {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

@@ -69,25 +69,31 @@
 
 .social-links {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
 }
 
-.social-links a {
-  color: #050505;
-  text-decoration: none;
+.social-link {
   display: flex;
   align-items: center;
-  gap: 8px;
-  transition: color 0.3s ease;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.social-links a:hover {
-  color: #0b0b0b;
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.social-icon {
-  font-size: 1.2rem;
+.social-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
 }
 
 .footer-bottom {

@@ -52,29 +52,49 @@ const Footer = () => {
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
-              <span className="social-icon">📘</span> Facebook
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/124/124010.png"
+                alt="Facebook"
+                className="social-logo"
+              />
             </a>
             <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
-              <span className="social-icon">🐦</span> Twitter
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/124/124021.png"
+                alt="Twitter"
+                className="social-logo"
+              />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
-              <span className="social-icon">📸</span> Instagram
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+                alt="Instagram"
+                className="social-logo"
+              />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-link"
             >
-              <span className="social-icon">💼</span> LinkedIn
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                alt="LinkedIn"
+                className="social-logo"
+              />
             </a>
           </div>
         </div>

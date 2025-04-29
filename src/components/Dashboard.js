@@ -38,7 +38,6 @@ const Dashboard = () => {
           navigate("/restaurant-login");
         }
       } catch (error) {
-        console.error("Error fetching restaurant data:", error);
       } finally {
         setLoading(false);
       }
@@ -63,7 +62,7 @@ const Dashboard = () => {
     },
     { title: "Sales", value: restaurantData?.stats?.orders || "0", icon: "🛒" },
     {
-      title: "Revenue",
+      title: "Profit",
       value: `₹${restaurantData?.stats?.revenue || "0"}`,
       icon: "💰",
     },

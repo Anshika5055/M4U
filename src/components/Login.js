@@ -6,7 +6,6 @@ const Login = () => {
   const [btnName, setBtnName] = useState("Login");
   const [showSignup, setShowSignup] = useState(false);
   const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -37,6 +36,82 @@ const Login = () => {
       }, 3000);
     }
   };
+
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const emailChangeHandler = (e) => {
+    setMail(e.target.value);
+    console.log(mail);
+  };
+  const passwordChangeHandler = (e) => {
+    setPassword(e.target.value);
+    console.log(password);
+  };
+
+  const login = async () => {
+    await fetch("http://localhost:5001/api/login", {
+      method: "POST",
+      body: JSON.stringify({
+        email: mail,
+        password: password,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data["msg"] === "Logged In") {
+          if (data["user"]["is_verified"] === 1) {
+            console.log("Logged In success");
+            window.alert("Logged In success");
+            setMail("");
+            setPassword("");
+          } else {
+            console.log("user Not Verified");
+          }
+        }
+      });
+  };
+
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const nameChangeHandler = (e) => {
+    setName(e.target.value);
+  };
+  const phoneChangeHandler = (e) => {
+    setPhone(e.target.value);
+  };
+
+  const signup = async () => {
+    const result = await fetch("http://localhost:5001/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        email: mail,
+        password: password,
+        phone: phone,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setShowSignup(false);
+        // if (data['msg'] == "Logged In") {
+        //     console.log("Logged In success")
+        //     navigate('/')
+        // }
+      });
+  };
+
   return (
     <div className="login-container">
       <video autoPlay muted loop className="video-lg">
@@ -50,22 +125,25 @@ const Login = () => {
             <div className="input-container">
               <label className="floating-label">Username</label>
               <input
-                placeholder="Type Here"
+                placeholder="username or email"
                 type="text"
                 required
                 className="input-field"
+                name="mail"
+                onChange={emailChangeHandler}
               />
             </div>
             <div className="input-container">
               <label className="floating-label">Password</label>
               <div className="password-container">
                 <input
-                  placeholder="Type Here"
+                  placeholder="Password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   required
                   className="input-field"
                   maxLength="20"
-                  onChange={handlePasswordChange}
+                  onChange={passwordChangeHandler}
                 />
                 <span
                   className="eye-icon"
@@ -88,7 +166,7 @@ const Login = () => {
               </div>
             )}
             <div className="button-group">
-              <button type="submit" className="login-btn">
+              <button type="submit" className="login-btn" onClick={login}>
                 Login
               </button>
             </div>
@@ -106,14 +184,38 @@ const Login = () => {
               &times;
             </span>
             <h2 className="signup-title">Sign Up</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input-container">
-                <label className="floating-label">New Username</label>
+                <label className="floating-label">Name</label>
                 <input
                   placeholder="Type Here"
                   type="text"
                   required
                   className="input-field"
+                  name="name"
+                  onChange={nameChangeHandler}
+                />
+              </div>
+              <div className="input-container">
+                <label className="floating-label">Email</label>
+                <input
+                  placeholder="Type Here"
+                  type="text"
+                  required
+                  className="input-field"
+                  name="mail"
+                  onChange={emailChangeHandler}
+                />
+              </div>
+              <div className="input-container">
+                <label className="floating-label">Phone</label>
+                <input
+                  placeholder="Type Here"
+                  type="text"
+                  required
+                  className="input-field"
+                  name="phone"
+                  onChange={phoneChangeHandler}
                 />
               </div>
               <div className="input-container">
@@ -124,6 +226,8 @@ const Login = () => {
                     type={showSignupPassword ? "text" : "password"}
                     required
                     className="input-field"
+                    name="password"
+                    onChange={passwordChangeHandler}
                   />
                   <span
                     className="eye-icon"
@@ -133,8 +237,9 @@ const Login = () => {
                   </span>
                 </div>
               </div>
+
               <div className="button-group">
-                <button type="submit" className="signup-btn">
+                <button type="submit" className="signup-btn" onClick={signup}>
                   Sign Up
                 </button>
               </div>

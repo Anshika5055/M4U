@@ -69,7 +69,7 @@ const Body = () => {
 
       setCategories(categoryData);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      // console.error("Error fetching data:", error);
     }
   };
 

@@ -13,6 +13,7 @@ const Contact = () => {
           <input
             type="text"
             id="name"
+            className="ARCONT"
             name="name"
             placeholder="Enter your name"
           />
@@ -26,6 +27,7 @@ const Contact = () => {
             type="email"
             id="email"
             name="email"
+            className="ARCONT"
             placeholder="Enter your email"
           />
           <br />
@@ -37,6 +39,7 @@ const Contact = () => {
           <textarea
             id="message"
             name="message"
+            className="ARCONT"
             placeholder="Enter your message"
           ></textarea>
           <br />
