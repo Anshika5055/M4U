@@ -39,7 +39,7 @@ const Footer = () => {
           <h3>Contact Us</h3>
           <ul>
             <li>📞 +91 1234567890</li>
-            <li>📧 support@foodvilla.com</li>
+            <li>📧 support@M4U.com</li>
             <li>📍 Krishna Colony, Bhiwani</li>
             <li>Haryana, India - 127021</li>
           </ul>

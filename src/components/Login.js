@@ -48,7 +48,6 @@ const Login = () => {
     setPassword(e.target.value);
     console.log(password);
   };
-
   const login = async () => {
     await fetch("http://localhost:5001/api/login", {
       method: "POST",
@@ -66,6 +65,7 @@ const Login = () => {
         console.log(data);
         if (data["msg"] === "Logged In") {
           if (data["user"]["is_verified"] === 1) {
+            localStorage.setItem("userToken", data.token); // <-- ADD THIS LINE
             console.log("Logged In success");
             window.alert("Logged In success");
             setMail("");
@@ -76,6 +76,34 @@ const Login = () => {
         }
       });
   };
+
+  // const login = async () => {
+  //   await fetch("http://localhost:5001/api/login", {
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       email: mail,
+  //       password: password,
+  //     }),
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       if (data["msg"] === "Logged In") {
+  //         if (data["user"]["is_verified"] === 1) {
+  //           console.log("Logged In success");
+  //           window.alert("Logged In success");
+  //           setMail("");
+  //           setPassword("");
+  //         } else {
+  //           console.log("user Not Verified");
+  //         }
+  //       }
+  //     });
+  // };
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -105,10 +133,6 @@ const Login = () => {
       .then((data) => {
         console.log(data);
         setShowSignup(false);
-        // if (data['msg'] == "Logged In") {
-        //     console.log("Logged In success")
-        //     navigate('/')
-        // }
       });
   };
 
