@@ -20,7 +20,7 @@ import Cart from "./components/Cart.js";
 import Login from "./components/Login.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
 import Shimmer from "./components/Shimmer.js";
-import Grocery from "./components/Grocery";
+// import Grocery from "./components/Grocery";
 import Checkout from "./components/Checkout.js";
 import { CartProvider } from "../context/cartContext.js";
 import { RestaurantProvider } from "../context/RestaurantContext.js";
