@@ -6,7 +6,6 @@ import Chatbot from "./Chatbot";
 import { Link } from "react-router";
 import MenuFilterApp from "./MenuFilterApp";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import Footer from "./Footer";
 
 const Body = () => {
   const [listfRestaurants, setlistofRestaurants] = useState([]);
@@ -241,8 +240,6 @@ const Body = () => {
           ↑
         </button>
       )}
-
-      <Footer />
     </div>
   );
 };

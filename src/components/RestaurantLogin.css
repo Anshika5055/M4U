@@ -1,13 +1,14 @@
-.restaurant-login {
+.restaurant-login1 {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f6f6f6;
   padding: 20px;
+  margin-top: 3%;
 }
 
-.containerres {
+.containerres1 {
   display: flex;
   width: 75%;
   max-width: 1200px;
@@ -19,18 +20,7 @@
 
 .login-banner {
   flex: 1;
-  /* background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.05) 50%,
-    rgba(0, 0, 0, 0.9) 100%
-  ); */
-  /* background: radial-gradient(
-    deg,
-    rgba(65, 80, 109, 1) 0%,
-    rgba(90, 125, 237, 1) 100%,
-    rgba(152, 119, 227, 1) 0%
-  ); */
+
   background: white;
   padding: 40px;
   display: flex;

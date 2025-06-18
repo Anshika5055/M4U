@@ -202,7 +202,7 @@ const Chatbot = () => {
                     Agent 1: Order Issue
                   </button>
                   <button
-                    onClick={() => connectToAgent("9485965439")}
+                    onClick={() => connectToAgent("9416910303")}
                     style={{
                       backgroundColor: "#25D366",
                       color: "white",
@@ -216,7 +216,7 @@ const Chatbot = () => {
                     Agent 2: Menu Related
                   </button>
                   <button
-                    onClick={() => connectToAgent("8708719044")}
+                    onClick={() => connectToAgent("9896343306")}
                     style={{
                       backgroundColor: "#25D366",
                       color: "white",

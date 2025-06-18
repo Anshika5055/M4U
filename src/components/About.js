@@ -1,12 +1,8 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-// import ab from "../assets/ab.jpg";
-// import bd from "../assets/bd.jpg";
-// import c from "../assets/c.jpg";
 import User from "./User";
 import { Component } from "react";
 import UserClass from "./UserClass";
-// import "./About.css";
 import "../../Usercs.css";
 class About extends Component {
   render() {

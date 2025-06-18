@@ -4,7 +4,7 @@ import "./RestaurantLogin.css";
 
 // Mock restaurant data
 const MOCK_RESTAURANTS = {
-  "restaurant1@test.com": {
+  "res1@gmail.com": {
     passkey: "res123",
     restaurantInfo: {
       name: "Tasty Bites",
@@ -18,8 +18,8 @@ const MOCK_RESTAURANTS = {
       },
     },
   },
-  "restaurant2@test.com": {
-    passkey: "food456",
+  "res2@gmail.com": {
+    passkey: "fres234",
     restaurantInfo: {
       name: "Pizza Paradise",
       cuisines: ["Italian", "Fast Food"],
@@ -63,8 +63,8 @@ const RestaurantLogin = () => {
   };
 
   return (
-    <div className="restaurant-login">
-      <div className="containerres">
+    <div className="restaurant-login1">
+      <div className="containerres1">
         <div className="login-banner">
           <div className="banner-content">
             <h2>Welcome to Restaurant Dashboard</h2>

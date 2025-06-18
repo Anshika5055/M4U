@@ -1,19 +1,3 @@
-// const Cart = () => {
-//   return (
-//     <div className="Cart-m4u">
-//       <img
-//         src="https://cdn-icons-png.flaticon.com/512/3081/3081840.png"
-//         alt="cart"
-//         width="100"
-//         height="100"
-//       />
-//       <h1 className="cart1"> OOPS,Cart is Empty </h1>
-//     </div>
-//   );
-// };
-
-// export default Cart;
-// import React from "react";
 import { useCart } from "../../context/cartContext";
 import { useNavigate } from "react-router";
 import "./Cart.css";

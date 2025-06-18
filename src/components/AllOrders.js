@@ -4,68 +4,68 @@ import "./AllOrders.css";
 const AllOrders = () => {
   const allOrders = [
     {
-      name: "Star Refrigerator",
-      price: "$1200",
+      name: "Paneer Butter Masala",
+      price: "₹350",
       payment: "Paid",
       status: "Delivered",
       date: "2024-03-20",
-      customer: "David Miller",
+      customer: "Anshika rakheja",
     },
     {
-      name: "Dell Laptop",
-      price: "$110",
+      name: "Chicken Biryani",
+      price: "₹280",
       payment: "Due",
       status: "Pending",
       date: "2024-03-19",
-      customer: "Sarah Johnson",
+      customer: "Priya Sharma",
     },
     {
-      name: "Apple Watch",
-      price: "$1200",
+      name: "Masala Dosa",
+      price: "₹120",
       payment: "Paid",
       status: "Return",
       date: "2024-03-18",
-      customer: "Michael Brown",
+      customer: "Amit Verma",
     },
     {
-      name: "Adidas Shoes",
-      price: "$620",
+      name: "Butter Naan",
+      price: "₹60",
       payment: "Due",
       status: "In Progress",
       date: "2024-03-17",
-      customer: "Emma Wilson",
+      customer: "Kunal",
     },
     {
-      name: "Samsung TV",
-      price: "$899",
+      name: "Tandoori Chicken",
+      price: "₹450",
       payment: "Paid",
       status: "Delivered",
       date: "2024-03-16",
-      customer: "James Anderson",
+      customer: "Kushal sharma",
     },
     {
-      name: "Sony Headphones",
-      price: "$299",
+      name: "Chole Bhature",
+      price: "₹180",
       payment: "Paid",
       status: "Delivered",
       date: "2024-03-15",
-      customer: "Lisa Chen",
+      customer: "Anjali Desai",
     },
     {
-      name: "Gaming Chair",
-      price: "$450",
+      name: "Rajma Chawal",
+      price: "₹150",
       payment: "Due",
       status: "Pending",
       date: "2024-03-14",
-      customer: "Tom Wright",
+      customer: "Vikram Joshi",
     },
     {
-      name: "iPhone 15",
-      price: "$999",
+      name: "Vada Pav",
+      price: "₹40",
       payment: "Paid",
       status: "In Progress",
       date: "2024-03-13",
-      customer: "Anna Lee",
+      customer: "Pooja Iyer",
     },
   ];
 
@@ -94,7 +94,7 @@ const AllOrders = () => {
             <tr>
               <th>Order ID</th>
               <th>Customer</th>
-              <th>Product</th>
+              <th>Food Item</th>
               <th>Price</th>
               <th>Date</th>
               <th>Payment</th>

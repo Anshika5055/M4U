@@ -1,4 +1,4 @@
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router";
 import "./Grocery.css";
 import { categories, mockItems } from "../data/groceryData";
@@ -94,7 +94,7 @@ const Grocery = () => {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    overflow: "visible", // ⬅️ prevent parent from cutting text
+                    overflow: "visible",
                     paddingRight: "10%",
                   }}
                 >
@@ -105,7 +105,7 @@ const Grocery = () => {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        gap: "10px", // adds space between - quantity +
+                        gap: "10px",
                       }}
                     >
                       <button
@@ -173,10 +173,10 @@ const Grocery = () => {
                         display: "inline-block",
                         alignItems: "center",
                         justifyContent: "center",
-                        whiteSpace: "nowrap", // ✅ fixed
-                        overflow: "visible", // ✅ added
-                        textOverflow: "unset", // ✅ added
-                        maxWidth: "none", // ✅ optional safety
+                        whiteSpace: "nowrap",
+                        overflow: "visible",
+                        textOverflow: "unset",
+                        maxWidth: "none",
                         marginLeft: "55px",
                       }}
                     >

@@ -3,13 +3,15 @@ import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header.js";
 import Body from "./components/Body.js";
 import Chatbot from "./components/Chatbot.js";
-import VideoModal from "./components/VideoModal.js"; // Import VideoModal
+import VideoModal from "./components/VideoModal.js";
 import {
   createBrowserRouter,
   RouterProvider,
   Outlet,
   Navigate,
+  useLocation,
 } from "react-router";
+import { AuthProvider } from "./context2/AuthContext";
 
 import About from "./components/About.js";
 import Contact from "./components/Contact.js";
@@ -40,14 +42,21 @@ const ProtectedRoute = ({ children }) => {
 };
 
 const AppLayout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
-    <div className="app">
-      <VideoModal /> {/* Full-screen video on first visit */}
-      {/* <Shimmer /> */}
-      <Header />
-      <Outlet />
-      <Chatbot />
-    </div>
+    <AuthProvider>
+      <CartProvider>
+        <RestaurantProvider>
+          <Header />
+          <Outlet />
+          {isHomePage && <Footer />}
+          <Chatbot />
+          <VideoModal />
+        </RestaurantProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 };
 const DashboardLayout = () => {
@@ -58,6 +67,7 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -84,7 +94,7 @@ const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/menu/:resId", // dynamic
+        path: "/menu/:resId",
         element: <RestaurantMenu />,
       },
       {
@@ -94,37 +104,26 @@ const appRouter = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<h1>Loading</h1>}>
+          <Suspense fallback={<Shimmer />}>
             <Grocery />
           </Suspense>
         ),
       },
-    ],
-    errorElement: <Error />,
-  },
-  {
-    path: "/restaurant-login",
-    element: <RestaurantLogin />,
-  },
-  {
-    path: "/dashboard",
-    element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
       {
-        path: "",
+        path: "/restaurant-dashboard",
+        element: <RestaurantDashboard />,
+      },
+      {
+        path: "/dashboard",
         element: <Dashboard />,
       },
       {
-        path: "orders",
+        path: "/all-orders",
         element: <AllOrders />,
       },
       {
-        path: "menu-management",
-        element: <RestaurantDashboard />,
+        path: "/restaurant-login",
+        element: <RestaurantLogin />,
       },
     ],
   },
@@ -133,10 +132,4 @@ const appRouter = createBrowserRouter([
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(<RouterProvider router={appRouter} />);
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <CartProvider>
-    <RestaurantProvider>
-      <RouterProvider router={appRouter} />
-    </RestaurantProvider>
-  </CartProvider>
-);
+root.render(<RouterProvider router={appRouter} />);

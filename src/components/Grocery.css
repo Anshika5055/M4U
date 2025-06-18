@@ -1,4 +1,4 @@
-/* .grocery-container {
+.grocery-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -21,7 +21,6 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   margin-bottom: 10px;
 }
 
@@ -417,6 +416,7 @@
     grid-template-columns: 1fr;
   }
 }
+
 #grocery_button {
   list-style: none;
 }

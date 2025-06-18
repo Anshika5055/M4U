@@ -7,7 +7,7 @@ const RestaurantDashboard = () => {
   const [orders, setOrders] = useState([
     {
       id: 1,
-      customerName: "John Doe",
+      customerName: "Anshika",
       items: [
         { name: "Butter Chicken", quantity: 1, price: 350 },
         { name: "Naan", quantity: 2, price: 30 },

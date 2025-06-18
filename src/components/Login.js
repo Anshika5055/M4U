@@ -1,139 +1,226 @@
+// import React, { useState } from "react";
+// import { LOGIN_URL } from "../utils/constants";
+// import log from "../assets/log.mp4";
+
+// const Login = () => {
+//   const [btnName, setBtnName] = useState("Login");
+//   const [showSignup, setShowSignup] = useState(false);
+//   const [message, setMessage] = useState("");
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [showSignupPassword, setShowSignupPassword] = useState(false);
+//   const [showPopup, setShowPopup] = useState(false);
+//   const [popupMessage, setPopupMessage] = useState("");
+
+//   const handlePasswordChange = (e) => {
+//     const newPassword = e.target.value;
+//     setPassword(newPassword);
+//     if (newPassword.length >= 5) {
+//       setMessage("");
+//     } else {
+//       setMessage("Password must contain atleast 5 characters!");
+//     }
+//   };
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+
+//     if (password.length < 5) {
+//       setMessage("Password must contain atleast 5 characters!");
+//     } else {
+//       setBtnName("Logout"); // ✅ Updating Header's button text
+//       setPopupMessage("Successful login! Foodie has come 🍕🍔");
+//       setShowPopup(true);
+
+//       setTimeout(() => {
+//         setShowPopup(false);
+//       }, 3000);
+//     }
+//   };
+
+//   const [mail, setMail] = useState("");
+//   const [password, setPassword] = useState("");
+
+//   const emailChangeHandler = (e) => {
+//     setMail(e.target.value);
+//     console.log(mail);
+//   };
+//   const passwordChangeHandler = (e) => {
+//     setPassword(e.target.value);
+//     console.log(password);
+//   };
+//   const login = async () => {
+//     await fetch("http://localhost:5001/api/login", {
+//       method: "POST",
+//       body: JSON.stringify({
+//         email: mail,
+//         password: password,
+//       }),
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//     })
+//       .then((response) => response.json())
+//       .then((data) => {
+//         console.log(data);
+//         if (data["msg"] === "Logged In") {
+//           if (data["user"]["is_verified"] === 1) {
+//             localStorage.setItem("userToken", data.token); // <-- ADD THIS LINE
+//             console.log("Logged In success");
+//             window.alert("Logged In success");
+//             setMail("");
+//             setPassword("");
+//           } else {
+//             console.log("user Not Verified");
+//           }
+//         }
+//       });
+//   };
+
+// const login = async () => {
+//   await fetch("http://localhost:5001/api/login", {
+//     method: "POST",
+//     body: JSON.stringify({
+//       email: mail,
+//       password: password,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       console.log(data);
+//       if (data["msg"] === "Logged In") {
+//         if (data["user"]["is_verified"] === 1) {
+//           console.log("Logged In success");
+//           window.alert("Logged In success");
+//           setMail("");
+//           setPassword("");
+//         } else {
+//           console.log("user Not Verified");
+//         }
+//       }
+//     });
+// };
+
 import React, { useState } from "react";
 import { LOGIN_URL } from "../utils/constants";
 import log from "../assets/log.mp4";
+import { useNavigate } from "react-router";
+import { useAuth } from "../context2/AuthContext";
 
 const Login = () => {
-  const [btnName, setBtnName] = useState("Login");
   const [showSignup, setShowSignup] = useState(false);
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showSignupPassword, setShowSignupPassword] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
-  const handlePasswordChange = (e) => {
-    const newPassword = e.target.value;
-    setPassword(newPassword);
-    if (newPassword.length >= 5) {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (password.length < 5) {
+      setMessage("Password must contain atleast 5 characters!");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5001/api/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email: mail,
+          password: password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if (data["msg"] === "Logged In") {
+        if (data["user"]["is_verified"] === 1) {
+          login(data.token);
+          console.log("Logged In success");
+          setMail("");
+          setPassword("");
+          setPopupMessage("Successful login! Foodie has come 🍕🍔");
+          setShowPopup(true);
+
+          setTimeout(() => {
+            setShowPopup(false);
+            navigate("/");
+          }, 2000);
+        } else {
+          setMessage("User not verified");
+        }
+      } else {
+        setMessage("Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setMessage("An error occurred during login");
+    }
+  };
+
+  const emailChangeHandler = (e) => {
+    setMail(e.target.value);
+  };
+
+  const passwordChangeHandler = (e) => {
+    setPassword(e.target.value);
+    if (e.target.value.length >= 5) {
       setMessage("");
     } else {
       setMessage("Password must contain atleast 5 characters!");
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (password.length < 5) {
-      setMessage("Password must contain atleast 5 characters!");
-    } else {
-      setBtnName("Logout"); // ✅ Updating Header's button text
-      setPopupMessage("Successful login! Foodie has come 🍕🍔");
-      setShowPopup(true);
-
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 3000);
-    }
-  };
-
-  const [mail, setMail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const emailChangeHandler = (e) => {
-    setMail(e.target.value);
-    console.log(mail);
-  };
-  const passwordChangeHandler = (e) => {
-    setPassword(e.target.value);
-    console.log(password);
-  };
-  const login = async () => {
-    await fetch("http://localhost:5001/api/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: mail,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data["msg"] === "Logged In") {
-          if (data["user"]["is_verified"] === 1) {
-            localStorage.setItem("userToken", data.token); // <-- ADD THIS LINE
-            console.log("Logged In success");
-            window.alert("Logged In success");
-            setMail("");
-            setPassword("");
-          } else {
-            console.log("user Not Verified");
-          }
-        }
-      });
-  };
-
-  // const login = async () => {
-  //   await fetch("http://localhost:5001/api/login", {
-  //     method: "POST",
-  //     body: JSON.stringify({
-  //       email: mail,
-  //       password: password,
-  //     }),
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       if (data["msg"] === "Logged In") {
-  //         if (data["user"]["is_verified"] === 1) {
-  //           console.log("Logged In success");
-  //           window.alert("Logged In success");
-  //           setMail("");
-  //           setPassword("");
-  //         } else {
-  //           console.log("user Not Verified");
-  //         }
-  //       }
-  //     });
-  // };
-
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
   const nameChangeHandler = (e) => {
     setName(e.target.value);
   };
+
   const phoneChangeHandler = (e) => {
     setPhone(e.target.value);
   };
 
-  const signup = async () => {
-    const result = await fetch("http://localhost:5001/api/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: mail,
-        password: password,
-        phone: phone,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setShowSignup(false);
+  const signup = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5001/api/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: mail,
+          password: password,
+          phone: phone,
+        }),
       });
+
+      const data = await response.json();
+      console.log(data);
+      setShowSignup(false);
+      setPopupMessage("Signup successful! Please login.");
+      setShowPopup(true);
+    } catch (error) {
+      console.error("Signup error:", error);
+      setMessage("An error occurred during signup");
+    }
   };
 
   return (
@@ -154,6 +241,7 @@ const Login = () => {
                 required
                 className="input-field"
                 name="mail"
+                value={mail}
                 onChange={emailChangeHandler}
               />
             </div>
@@ -167,6 +255,7 @@ const Login = () => {
                   required
                   className="input-field"
                   maxLength="20"
+                  value={password}
                   onChange={passwordChangeHandler}
                 />
                 <span
@@ -190,7 +279,7 @@ const Login = () => {
               </div>
             )}
             <div className="button-group">
-              <button type="submit" className="login-btn" onClick={login}>
+              <button type="submit" className="login-btn">
                 Login
               </button>
             </div>
@@ -208,7 +297,7 @@ const Login = () => {
               &times;
             </span>
             <h2 className="signup-title">Sign Up</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={signup}>
               <div className="input-container">
                 <label className="floating-label">Name</label>
                 <input
@@ -217,6 +306,7 @@ const Login = () => {
                   required
                   className="input-field"
                   name="name"
+                  value={name}
                   onChange={nameChangeHandler}
                 />
               </div>
@@ -224,10 +314,11 @@ const Login = () => {
                 <label className="floating-label">Email</label>
                 <input
                   placeholder="Type Here"
-                  type="text"
+                  type="email"
                   required
                   className="input-field"
                   name="mail"
+                  value={mail}
                   onChange={emailChangeHandler}
                 />
               </div>
@@ -235,10 +326,11 @@ const Login = () => {
                 <label className="floating-label">Phone</label>
                 <input
                   placeholder="Type Here"
-                  type="text"
+                  type="tel"
                   required
                   className="input-field"
                   name="phone"
+                  value={phone}
                   onChange={phoneChangeHandler}
                 />
               </div>
@@ -251,6 +343,7 @@ const Login = () => {
                     required
                     className="input-field"
                     name="password"
+                    value={password}
                     onChange={passwordChangeHandler}
                   />
                   <span
@@ -263,7 +356,7 @@ const Login = () => {
               </div>
 
               <div className="button-group">
-                <button type="submit" className="signup-btn" onClick={signup}>
+                <button type="submit" className="signup-btn">
                   Sign Up
                 </button>
               </div>
@@ -284,6 +377,7 @@ const Login = () => {
             color: "white",
             padding: "10px",
             borderRadius: "5px",
+            zIndex: 1000,
           }}
         >
           {popupMessage}
